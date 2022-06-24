@@ -23,7 +23,7 @@ VALUES
   (1, 'Studio Wildcard'), 
   (2, 'Firaxis Games'), 
   (3, 'Netherrealm Studios'), 
-  (4, 'Veloren Community'), 
+  (4, 'Forest Anderson'), 
   (5, 'Treyarch'),
   (6, 'Nintendo'),
   (7, 'CD Project'),
