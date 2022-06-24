@@ -11,5 +11,5 @@ values (1, 'Airshipper', 'Veloren'),
 (8, 'Steam', 'Valve'),
 (9, 'Uplay', 'Ubisoft');
 
--- optinal
+-- optional
 -- (69, 'TristanIndustries', 'Grobi');
