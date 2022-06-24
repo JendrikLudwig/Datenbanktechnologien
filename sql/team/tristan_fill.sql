@@ -15,7 +15,8 @@ VALUES
   (11, 'Sport'),
   (12, 'Strategie'),
   (13, 'Rennspiel'),
-  (14, 'Survival');
+  (14, 'Survival'),
+  (15, 'Open-World-Survival');
 
 // DEVELOPER
 
