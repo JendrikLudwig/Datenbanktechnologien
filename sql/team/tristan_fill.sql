@@ -20,7 +20,7 @@ VALUES
 
 INSERT INTO developer
 VALUES 
-	(1, 'Studio Wildcard'), 
+  (1, 'Studio Wildcard'), 
   (2, 'Firaxis Games'), 
   (3, 'Netherrealm Studios'), 
   (4, 'Veloren Community'), 
