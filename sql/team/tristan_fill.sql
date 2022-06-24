@@ -1,37 +1,37 @@
 // GENRE
 
-insert into genre
-values (1, 'Action');
+INSERT INTO genre
+VALUES 
+  (1, 'Action'),
+  (2, 'Beat em up'),
+  (3, 'Shooter'),
+  (4, 'Geschicklichkeit'),
+  (5, 'Jump n Run'),
+  (6, 'Open World'),
+  (7, 'Musik'),
+  (8, 'Tanz'),
+  (9, 'RPG'),
+  (10, 'Simulation'),
+  (11, 'Sport'),
+  (12, 'Strategie'),
+  (13, 'Rennspiel');
 
-insert into genre
-values (2, 'Beat em up');
+// DEVELOPER
 
-insert into genre
-values (3, 'Shooter');
-
-insert into genre
-values (4, 'Geschicklichkeit');
-
-insert into genre
-values (5, 'Jump n Run');
-
-insert into genre
-values (6, 'Open World');
-
-insert into genre
-values (7, 'Musik');
-
-insert into genre
-values (8, 'Tanz');
-
-insert into genre
-values (9, 'RPG');
-
-insert into genre
-values (10, 'Simulation');
-
-insert into genre
-values (11, 'Sport');
-
-insert into genre
-values (12, 'Strategie');
+INSERT INTO developer
+VALUES 
+	(1, 'Studio Wildcard'), 
+  (2, 'Firaxis Games'), 
+  (3, 'Netherrealm Studios'), 
+  (4, 'Veloren Community'), 
+  (5, 'Treyarch'),
+  (6, 'Nintendo'),
+  (7, 'CD Project'),
+  (8, 'Riot Games'),
+  (9, 'Psyonix'),
+  (10, 'Ubisoft Montreal'),
+  (11, 'Porcelain Fortress'),
+  (12, 'Behaviour Interactive'),
+  (13, 'Larian Studios'),
+  (14, 'DICE'),
+  (15, 'Ghost Games');
