@@ -35,3 +35,19 @@ VALUES
   (13, 'Larian Studios'),
   (14, 'DICE'),
   (15, 'Ghost Games');
+
+// PUBLISHER
+
+INSERT INTO publisher
+VALUES
+	(1, 'Studio Wildcard'),
+  (2, '2K'),
+  (3, 'Warner Bros. Games'),
+  (4, 'Forest Anderson'),
+  (5, 'Activision'),
+  (6, 'CD Project'),
+  (7, 'Psyonix'),
+  (8, 'Ubisoft'),
+  (9, 'Porcelain Fortress'),
+  (10, 'Larian Studios'),
+  (11, 'Electronic Arts');
