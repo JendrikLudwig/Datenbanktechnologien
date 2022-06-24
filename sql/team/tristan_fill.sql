@@ -14,7 +14,8 @@ VALUES
   (10, 'Simulation'),
   (11, 'Sport'),
   (12, 'Strategie'),
-  (13, 'Rennspiel');
+  (13, 'Rennspiel'),
+  (14, 'Survival');
 
 // DEVELOPER
 
