@@ -42,4 +42,4 @@ VALUES
     (22, 14, 6, 'https://www.origin.com/deu/de-de/store/star-wars/star-wars-battlefront-2'),
     (23, 15, 6, 'https://www.origin.com/deu/de-de/store/need-for-speed/need-for-speed-heat'),
     (24, 15, 8, 'https://store.steampowered.com/app/1222680/Need_for_Speed_Heat/'),
-    (25, 16, 5, 'https://www.minecraft.net/de-de/store/minecraft-java-bedrock-edition-pc');
+    (25, 16, 5, 'https://www.xbox.com/de-DE/games/store/minecraft-java-bedrock-edition-for-pc/9NXP44L49SHJ/0010');
