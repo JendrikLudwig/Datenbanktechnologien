@@ -16,7 +16,8 @@ VALUES
   (12, 'Strategie'),
   (13, 'Rennspiel'),
   (14, 'Survival'),
-  (15, 'Open-World-Survival');
+  (15, 'Open-World-Survival'),
+  (16, 'Multiplayer Online Battle Arena');
 
 // DEVELOPER
 
