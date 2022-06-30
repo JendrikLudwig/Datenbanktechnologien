@@ -17,7 +17,7 @@ VALUES
 
     //LAUNCHERGAME
 
-    INSERT INTO launchergame
+INSERT INTO launchergame
 VALUES
 	(1, 1, 3, 'https://store.epicgames.com/de/p/ark'),
     (2, 1, 8, 'https://store.steampowered.com/app/346110/ARK_Survival_Evolved/'),
