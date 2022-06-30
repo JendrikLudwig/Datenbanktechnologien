@@ -57,3 +57,7 @@ Launcher - Origin, Epic Games
 // 15
 Game - Need For Speed: Heat
 Launcher - Steam, Origin
+
+// 16
+Game - Minecraft (Java-Edition)
+Launcher - Microsoft Store
