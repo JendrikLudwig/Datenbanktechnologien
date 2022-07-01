@@ -9,7 +9,8 @@ const config = {
 		methodOverride: {
 			allowed: ['PATCH', 'DELETE']
 		}
-	}
+	},
+	optimizeDeps: { include: [ 'objection', 'knex', 'pg' ], exclude: [ 'pg-native' ] }
 };
 
 export default config;
