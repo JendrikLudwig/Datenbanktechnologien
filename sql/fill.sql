@@ -1159,7 +1159,8 @@ VALUES
   (13, 'Larian Studios'),
   (14, 'DICE'),
   (15, 'Ghost Games'),
-  (16, 'Ubisoft');
+  (16, 'Ubisoft'),
+  (17, 'Mojang');
 
 
 INSERT INTO publisher
@@ -1175,48 +1176,47 @@ VALUES
   (9, 'Porcelain Fortress'),
   (10, 'Larian Studios'),
   (11, 'Electronic Arts'),
-  (12, 'Riot Games');
+  (12, 'Riot Games'),
+  (13, 'Mojang');
 
 
 INSERT INTO game
 VALUES
   (1,'ARK: Survival Evolved',15,'16',1,1,'2017-08-27','Als ein nackte/r Mann/Frau frierend und hungrig auf einer mysteriösen Insel gestrandet, musst du jagen, sammeln, Gegenstände fertigen, Früchte anpflanzen und einen Unterschlupf bauen, um zu überleben. Benutze Geschick und List, um auf ARK lebende Dinosaurier und urzeitliche Lebewesen zu töten, auszubrüten und zu reiten und verbünde dich mit Hunderten von Spielern oder spiele lokal!','["Einzelspieler", "Mehrspieler", "MMO", "Hardcore Mechanics", "Explore and Discover"]'),
-  (2,'Civilization VI','12','12',2,2,'2016-10-21','Civilization VI ist die neueste Ausgabe der prämierten Reihe Civilization. Geh mit deinem Reich auf Expansionskurs, bring deine Kultur voran und fordere die großen Anführer der Menschheitsgeschichte heraus.','[\"Einzelspieler\", \"Online-PvP\", \"LAN-PvP\", \"PvE\"]'),
-  (3,'Mortal Kombat 11','2','18',3,3,'2019-04-23','Mit den neuen benutzerdefinierten Charaktervariationen hast du eine beispiellose Kontrolle, um die Kämpfer anzupassen und zu deinen eigenen zu machen. Die neue Grafik-Engine, die jeden augenrausfallenden, schädelbrechenden Moment zur Schau stellt, bringt dich so nah an den Kampf, dass du ihn fühlen kannst. Mit einer Reihe neuer und wiederkehrender Klassik-Kämpfer setzt Mortal Kombats bester kinematografischer Story-Modus die epische Saga seit 25 Jahren fort.','[\"Einzelspieler\", \"Online-PvP\", \"PvE\", \"Splitscreen\", \"Blood and Gore\"]'),
-  (4,'Veloren','9','0',4,4,'2018-01-01','Veloren ist ein quelloffenes Computerrollenspiel mit Voxel-Technik, das unter der GPLv3 lizenziert ist. Das Spiel ist unter anderem von Cube World, Minecraft und The Legend of Zelda: Breath of the Wild inspiriert. Im Gegensatz zu kommerziellen Titeln geschieht sowohl die Entwicklung des Spieles als auch die Finanzierung laufender Kosten durch die Community.[1] Der Launcher Airshipper, durch den das Spiel heruntergeladen und aktualisiert wird, steht für Windows, macOS sowie Linux zum freien Download zur Verfügung. Zusätzlich ist das Spiel in diversen Linux-Paketmanagern, etwa dem Arch User Repository,[2] verfügbar. Das Projekt wird in der Programmiersprache Rust umgesetzt.','[\"Einzelspieler\", \"Mehrspieler\", \"PvE\", \"PvP\", \"Free to Play\", \"Explore and Discover\"]'),
-  (5,'Call of Duty: Black Ops 2','3','18',5,5,'2012-11-13','Als neunter Teil der Call-of-Duty-Serie knüpft er direkt an die Geschehnisse des Vorgängertitels Call of Duty: Black Ops an. Die Handlung spielt teils in den 1980er Jahren und im Jahre 2025. Der Spieler kann unter anderem durch die neuen Strike-Force-Modi die Handlung durch eigene Entscheidungen beeinflussen. Das Setting soll sich in einzelnen Abschnitten an Echtzeit-Strategiespielen orientieren.','[\"Einzelspieler\", \"Mehrspieler\", \"FPS\", \"Co-Op\", \"PvE\"]'),
+  (2,'Civilization VI',12,'12',2,2,'2016-10-21','Civilization VI ist die neueste Ausgabe der prämierten Reihe Civilization. Geh mit deinem Reich auf Expansionskurs, bring deine Kultur voran und fordere die großen Anführer der Menschheitsgeschichte heraus.','[\"Einzelspieler\", \"Online-PvP\", \"LAN-PvP\", \"PvE\"]'),
+  (3,'Mortal Kombat 11',2,'18',3,3,'2019-04-23','Mit den neuen benutzerdefinierten Charaktervariationen hast du eine beispiellose Kontrolle, um die Kämpfer anzupassen und zu deinen eigenen zu machen. Die neue Grafik-Engine, die jeden augenrausfallenden, schädelbrechenden Moment zur Schau stellt, bringt dich so nah an den Kampf, dass du ihn fühlen kannst. Mit einer Reihe neuer und wiederkehrender Klassik-Kämpfer setzt Mortal Kombats bester kinematografischer Story-Modus die epische Saga seit 25 Jahren fort.','[\"Einzelspieler\", \"Online-PvP\", \"PvE\", \"Splitscreen\", \"Blood and Gore\"]'),
+  (4,'Veloren',9,'0',4,4,'2018-01-01','Veloren ist ein quelloffenes Computerrollenspiel mit Voxel-Technik, das unter der GPLv3 lizenziert ist. Das Spiel ist unter anderem von Cube World, Minecraft und The Legend of Zelda: Breath of the Wild inspiriert. Im Gegensatz zu kommerziellen Titeln geschieht sowohl die Entwicklung des Spieles als auch die Finanzierung laufender Kosten durch die Community.[1] Der Launcher Airshipper, durch den das Spiel heruntergeladen und aktualisiert wird, steht für Windows, macOS sowie Linux zum freien Download zur Verfügung. Zusätzlich ist das Spiel in diversen Linux-Paketmanagern, etwa dem Arch User Repository,[2] verfügbar. Das Projekt wird in der Programmiersprache Rust umgesetzt.','[\"Einzelspieler\", \"Mehrspieler\", \"PvE\", \"PvP\", \"Free to Play\", \"Explore and Discover\"]'),
+  (5,'Call of Duty: Black Ops 2',3,'18',5,5,'2012-11-13','Als neunter Teil der Call-of-Duty-Serie knüpft er direkt an die Geschehnisse des Vorgängertitels Call of Duty: Black Ops an. Die Handlung spielt teils in den 1980er Jahren und im Jahre 2025. Der Spieler kann unter anderem durch die neuen Strike-Force-Modi die Handlung durch eigene Entscheidungen beeinflussen. Das Setting soll sich in einzelnen Abschnitten an Echtzeit-Strategiespielen orientieren.','[\"Einzelspieler\", \"Mehrspieler\", \"FPS\", \"Co-Op\", \"PvE\"]'),
   (6,'Just Dance',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]'),
-  (7,'Cyberpunk 2077','9','18',7,6,'2020-12-10','Cyberpunk 2077 ist ein Open-World-Action-Adventure-RPG, das in Night City spielt – einer gefährlichen Metropole, deren Bewohner von Macht, Glamour und Körpermodifikationen besessen sind.','[\"Einzelspieler\", \"PvE\", \"FPS\"]'),
-  (8,'League of Legends','16','12',8,12,'2009-10-27','League of Legends ist ein teambasiertes Strategiespiel, in dem zwei Teams mit je fünf starken Champions gegeneinander antreten, um die jeweils andere Basis zu zerstören.','[\"Einzelspieler\", \"Mehrspieler\", \"PvP\", \"PvE\"]'),
-  /*Test Data - editing required*/
-  (9,'Rocket League',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]'),
-  (10,'Legends of Runeterra',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]'),
-  (11,'Tom Clancys Rainbow Six: Siege',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]'),
-  (12,'No Time To Relax',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]'),
-  (13,'Divinity: Original Sin 2',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]'),
-  (14,'Star Wars: Battlefront 2',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]'),
-  (15,'Need For Speed: Heat',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]'),
-  (16,'Minecraft',8,'0',16,8,'2009-11-12','In Just Dance versucht der Spieler, alle Bewegungen des On-Screen-Tänzers zu imitieren. Spieler erhalten Punkte je nachdem, wie gut sie sich bewegt haben.','[\"Einzelspieler\", \"Mehrspieler\", \"Versus\", \"Tracking\"]');
-
+  (7,'Cyberpunk 2077',9,'18',7,6,'2020-12-10','Cyberpunk 2077 ist ein Open-World-Action-Adventure-RPG, das in Night City spielt – einer gefährlichen Metropole, deren Bewohner von Macht, Glamour und Körpermodifikationen besessen sind.','[\"Einzelspieler\", \"PvE\", \"FPS\"]'),
+  (8,'League of Legends',16,'12',8,12,'2009-10-27','League of Legends ist ein teambasiertes Strategiespiel, in dem zwei Teams mit je fünf starken Champions gegeneinander antreten, um die jeweils andere Basis zu zerstören.','[\"Einzelspieler\", \"Mehrspieler\", \"Online-PvP\", \"LAN-PvP\", \"PvE\", \"Free to Play\"]'),
+  (9,'Rocket League',11,'6',9,7,'2015-07-07','Das Spielprinzip ähnelt am ehesten einem Autoballspiel, in dem die Spieler versuchen, einen etwas größeren Ball mit Hilfe von Autos in das gegnerische Tor zu befördern. Es besitzt Elemente von Fußball und Stockcar.','[\"Online-PvP\", \"LAN-PvP\", \"PvE\", \"Splitscreen\", \"Free to Play\"]'),
+  (10,'Legends of Runeterra',12,'12',8,12,'2020-04-28','Legends of Runeterra (Abkürzung: LoR) ist ein kostenlos spielbares Online-Sammelkartenspiel. Legends of Runeterra wird rundenbasierend gespielt. Ziel des Spiels ist es, durch Angriffe und Zauber den gegnerischen Nexus zu vernichten. Der Nexus beider Spieler hat eine maximale Gesundheit von 20 Punkten.','[\"Online-PvP\", \"Versus\", \"Free to Play\"]'),
+  (11,'Tom Clancys Rainbow Six: Siege',3,'16',10,8,'2015-12-01','In "Rainbow Six Siege" sind Sie Teil einer fünfköpfigen Antiterroreinheit oder Terrorgruppe. Erstere muss in der Regel Bomben entschärfen oder Geiseln retten, während die Terroristen die Pläne entsprechend vereiteln sollen. Ist eine Runde vorbei, wechseln Angreifer und Verteidiger die Rollen.','[\"Mehrspieler\", \"Online-PvP\", \"LAN-PvP\", \"PvE\"]'),
+  (12,'No Time To Relax',10,'0',11,9,'2019-02-28','No Time to Relax ist eine Lebenssimulation, in der bis zu 4 Spieler online oder lokal in einem ultimativen Spiel des Lebens gegeneinander antreten.','[\"Online-PvP\", \"Mehrspieler\", \"Versus\", \"LAN-PvP\"]'),
+  (13,'Divinity: Original Sin 2',9,'16',13,10,'2017-09-14','Divinity: Original Sin 2 ist ein rundenbasiertes Fantasy-Rollenspiel des belgischen Entwicklers Larian Studios.','[\"Einzelspieler\", \"Online-PvP\", \"LAN-PvP\", \"Co-Op\"]'),
+  (14,'Star Wars: Battlefront 2',3,'16',14,11,'2017-11-16','Star Wars Battlefront II (kurz meist SWBF II genannt) ist ein Ego-Shooter/Third-Person-Shooter, basierend auf dem Star-Wars-Universum. Das Spiel stellt den siebten Teil der Star Wars: Battlefront-Computerspielreihe dar.','[\"Einzelspieler\", \"Mehrspieler\", \"Online-PvP\", \"Online-PvE\", \"Co-Op\"]'),
+  (15,'Need For Speed: Heat',13,'12',15,11,'2019-11-08','Rase am Tag und riskiere alles in der Nacht – in der Need for Speed Heat Deluxe Edition, einem atemberaubenden Streetracing-Erlebnis, in dem die Grenzen des Gesetzes verblassen, sobald die Sonne untergeht.','[\"Einzelspieler\", \"Online-PvP\", \"Online-PvE\", \"Peripherie\"]'),
+  (16,'Minecraft',15,'6',17,13,'2009-05-17','Im Spiel erschafft der Spieler Konstruktionen, wie Gebäude oder Schaltkreise aus zumeist würfelförmigen Elementen in einer prozedural generierten, dreidimensionalen Welt, die ebenso aus Würfeln besteht. Diese an die Natur angelehnte Spielwelt kann darüber hinaus erkundet werden, um Ressourcen zu sammeln, gegen Monster zu kämpfen und gefundene Rohstoffe zu neuen Gegenständen weiterzuverarbeiten.','[\"Einzelspieler\", \"Mehrspieler\", \"Online-PvP\", \"Online-PvE\", \"Hardcore Mechanics\", \"Explore and Discover\"]');
 
 
 INSERT INTO launcher
 VALUES
-	(1, 'Airshipper', 'Veloren'),
-	(2, 'Battle.net', 'Blizzard Entertainment'),
+  (1, 'Airshipper', 'Veloren'),
+  (2, 'Battle.net', 'Blizzard Entertainment'),
   (3, 'Epic Games Store', 'Epic Games'),
-	(4, 'GoG', 'CD Projekt'),
-	(5, 'Microsoft Store', 'Microsoft'),
-	(6, 'Origin', 'Electronic Arts'),
-	(7, 'Riot Games', 'Riot Games'),
-	(8, 'Steam', 'Valve'),
-	(9, 'Uplay', 'Ubisoft'),
+  (4, 'GoG', 'CD Projekt'),
+  (5, 'Microsoft Store', 'Microsoft'),
+  (6, 'Origin', 'Electronic Arts'),
+  (7, 'Riot Games', 'Riot Games'),
+  (8, 'Steam', 'Valve'),
+  (9, 'Uplay', 'Ubisoft'),
   (10, 'Webbrowser', '');
 
 
 INSERT INTO launchergame
 VALUES
-	  ('1', '1', '3', 'https://store.epicgames.com/de/p/ark'),
+    ('1', '1', '3', 'https://store.epicgames.com/de/p/ark'),
     ('2', '1', '8', 'https://store.steampowered.com/app/346110/ARK_Survival_Evolved/'),
     ('3', '2', '3', 'https://store.epicgames.com/de/p/sid-meiers-civilization-vi'),
     ('4', '2', '8', 'https://store.steampowered.com/app/289070/Sid_Meiers_Civilization_VI/'),
