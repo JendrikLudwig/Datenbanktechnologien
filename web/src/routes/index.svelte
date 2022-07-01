@@ -1,20 +1,25 @@
 <script>
 
-    let data;
-
+    let data = [];
+    
     async function load() {
-        data = await fetch("./api/games.json")
+        const response = await fetch("/api/test.json")
             .then(x => {return x.json()})
-        console.log(data); 
+        data = response;
     }
 
+    let länge
+    $: länge = data.length 
+        
 </script>
-<style></style>
 
 
+<h1>Hallo Grobiiii</h1>
+<button on:click={load}>Hol Daten</button>
 
-<h1>Wilkommen in unserem Projek</h1>
-<button on:click={load}>Daten Laden</button>
-<div>
-    {JSON.stringify(data)}
-</div>
+{#each data as game }
+<p>{game.Title}</p>
+    
+{/each}
+    
+
