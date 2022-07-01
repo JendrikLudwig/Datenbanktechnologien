@@ -1,4 +1,5 @@
 <script>
+    import Card from "../comp/card.svelte"
 
     let data = [];
     
@@ -17,9 +18,8 @@
 <h1>Hallo Grobiiii</h1>
 <button on:click={load}>Hol Daten</button>
 
-{#each data as game }
-<p>{game.Title}</p>
-    
+{#each data as game}
+    <Card> {game.Title} </Card>
 {/each}
     
 
