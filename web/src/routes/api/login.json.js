@@ -11,10 +11,18 @@ export const mysqlconn = await mysql.createConnection({
 
 export const post = async ({request}) => {
     
-    try {
         const data = await request.json();
 
         let {mail, password} = data
+
+        if(!mail, !password) {
+            return {
+                status: 403,
+                body: {
+                    error: "Fehlender Parameter"
+                }
+            };
+        }
         
         const query = `
 
@@ -29,10 +37,12 @@ export const post = async ({request}) => {
             return rows;
         });
 
-        console.log(results[0].Password, password);
+        console.log(results?.[0]?.Password, password);
 
-        if (results[0].Password == password) {
-            return {body:{
+
+
+        if (results?.[0]?.Password == password) {
+            return {body: {
                 id: results[0].UserID,
                 username: results[0].UserName,
                 pic: results[0].ProfilePicture    
@@ -43,18 +53,11 @@ export const post = async ({request}) => {
         return {
             status: 403,
             body: {
-                message: "Falsches Passwort oder E-Mail"
+                error: "Falsches Passwort oder E-Mail"
             }
+
         };
         
-    } catch (error) {
-        return {
-            status: 404,
-            body: {
-                error:error
-            }
-        };
-    }
     
     
 }

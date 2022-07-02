@@ -1,27 +1,12 @@
 <script>
-    import Card from "../comp/card.svelte"
+    import LoginProvider from "../comp/providers/login_provider.svelte"
 
-    let data = [];
-    
-    async function load() {
-        const response = await fetch("/api/test.json")
-            .then(x => {return x.json()})
-        data = response;
-    }
 
-    let länge
-    $: länge = data.length 
-        
 </script>
 
+<LoginProvider let:user={user}>
+    <h1>Wilkommen auf der Seite</h1>
 
-<h1>Hallo Grobiiii</h1>
-<button on:click={load}>Hol Daten</button>
+    <p>{user.username}</p>
 
-{#each data as game}
-    <Card> {game.Title} </Card>
-{/each}
-    
-
-
-<h1>Hallo Welt</h1>
+</LoginProvider>
