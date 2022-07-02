@@ -14,6 +14,95 @@ USE `Datenbanktechnologien_GroJägLud`;
 
 DROP TABLE IF EXISTS `befreundet_mit`;
 
+--
+-- Table structure for table `language`
+--
+
+DROP TABLE IF EXISTS `language`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `language` (
+  `LanguageID` int NOT NULL AUTO_INCREMENT,
+  `LanguageName` varchar(255) NOT NULL,
+  PRIMARY KEY (`LanguageID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `language`
+--
+
+LOCK TABLES `language` WRITE;
+/*!40000 ALTER TABLE `language` DISABLE KEYS */;
+/*!40000 ALTER TABLE `language` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+--
+-- Table structure for table `country`
+--
+
+DROP TABLE IF EXISTS `country`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `country` (
+  `CountryID` int NOT NULL AUTO_INCREMENT,
+  `CountryName` varchar(255) NOT NULL,
+  PRIMARY KEY (`CountryID`),
+  UNIQUE KEY `CountryName_UNIQUE` (`CountryName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+
+--
+-- Dumping data for table `country`
+--
+
+LOCK TABLES `country` WRITE;
+/*!40000 ALTER TABLE `country` DISABLE KEYS */;
+/*!40000 ALTER TABLE `country` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `user` (
+  `UserID` int NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(255) NOT NULL,
+  `Mail` varchar(255) NOT NULL UNIQUE,
+  `Password` varchar(255) NOT NULL,
+  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `FirstName` varchar(255) NOT NULL,
+  `LastName` varchar(255) NOT NULL,
+  `DateOfBirth` datetime NOT NULL,
+  `CountryID` int NOT NULL,
+  `LanguageID` int NOT NULL,
+  `LatestActivity` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ProfilePicture` varchar(255),
+  PRIMARY KEY (`UserID`),
+  KEY `language_fk_idx` (`LanguageID`),
+  KEY `country_fk_idx` (`CountryID`),
+  CONSTRAINT `country_fk` FOREIGN KEY (`CountryID`) REFERENCES `country` (`CountryID`) ON UPDATE CASCADE,
+  CONSTRAINT `language_fk` FOREIGN KEY (`LanguageID`) REFERENCES `language` (`LanguageID`) ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 CREATE TABLE `befreundet_mit` (
   `FirstUserID` int NOT NULL,
   `SecondUserID` int NOT NULL,
@@ -34,56 +123,7 @@ LOCK TABLES `befreundet_mit` WRITE;
 /*!40000 ALTER TABLE `befreundet_mit` ENABLE KEYS */;
 UNLOCK TABLES;
 
---
--- Table structure for table `besitzt`
---
 
-DROP TABLE IF EXISTS `besitzt`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `besitzt` (
-  `UserID` int NOT NULL,
-  `LauncherGame` int NOT NULL,
-  `PlayTime` int DEFAULT '0',
-  PRIMARY KEY (`UserID`,`LauncherGame`),
-  KEY `LauncherGameID_idx` (`LauncherGame`),
-  CONSTRAINT `LauncherGameID` FOREIGN KEY (`LauncherGame`) REFERENCES `launchergame` (`LauncherGameID`),
-  CONSTRAINT `user_fk` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `besitzt`
---
-
-LOCK TABLES `besitzt` WRITE;
-/*!40000 ALTER TABLE `besitzt` DISABLE KEYS */;
-/*!40000 ALTER TABLE `besitzt` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `country`
---
-
-DROP TABLE IF EXISTS `country`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `country` (
-  `CountryID` int NOT NULL AUTO_INCREMENT,
-  `CountryName` varchar(255) NOT NULL,
-  PRIMARY KEY (`CountryID`),
-  UNIQUE KEY `CountryName_UNIQUE` (`CountryName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `country`
---
-
-LOCK TABLES `country` WRITE;
-/*!40000 ALTER TABLE `country` DISABLE KEYS */;
-/*!40000 ALTER TABLE `country` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `developer`
@@ -106,6 +146,56 @@ CREATE TABLE `developer` (
 LOCK TABLES `developer` WRITE;
 /*!40000 ALTER TABLE `developer` DISABLE KEYS */;
 /*!40000 ALTER TABLE `developer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+--
+-- Table structure for table `genre`
+--
+
+DROP TABLE IF EXISTS `genre`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `genre` (
+  `GenreID` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(45) NOT NULL,
+  PRIMARY KEY (`GenreID`),
+  UNIQUE KEY `GenreID_UNIQUE` (`GenreID`),
+  UNIQUE KEY `Name_UNIQUE` (`Name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `genre`
+--
+
+LOCK TABLES `genre` WRITE;
+/*!40000 ALTER TABLE `genre` DISABLE KEYS */;
+/*!40000 ALTER TABLE `genre` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `publisher`
+--
+
+DROP TABLE IF EXISTS `publisher`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `publisher` (
+  `PublisherID` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(255) NOT NULL,
+  PRIMARY KEY (`PublisherID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `publisher`
+--
+
+LOCK TABLES `publisher` WRITE;
+/*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
+/*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -136,6 +226,7 @@ CREATE TABLE `game` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
 --
 -- Dumping data for table `game`
 --
@@ -143,54 +234,6 @@ CREATE TABLE `game` (
 LOCK TABLES `game` WRITE;
 /*!40000 ALTER TABLE `game` DISABLE KEYS */;
 /*!40000 ALTER TABLE `game` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `genre`
---
-
-DROP TABLE IF EXISTS `genre`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `genre` (
-  `GenreID` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(45) NOT NULL,
-  PRIMARY KEY (`GenreID`),
-  UNIQUE KEY `GenreID_UNIQUE` (`GenreID`),
-  UNIQUE KEY `Name_UNIQUE` (`Name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `genre`
---
-
-LOCK TABLES `genre` WRITE;
-/*!40000 ALTER TABLE `genre` DISABLE KEYS */;
-/*!40000 ALTER TABLE `genre` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `language`
---
-
-DROP TABLE IF EXISTS `language`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `language` (
-  `LanguageID` int NOT NULL AUTO_INCREMENT,
-  `LanguageName` varchar(255) NOT NULL,
-  PRIMARY KEY (`LanguageID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `language`
---
-
-LOCK TABLES `language` WRITE;
-/*!40000 ALTER TABLE `language` DISABLE KEYS */;
-/*!40000 ALTER TABLE `language` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -247,72 +290,28 @@ LOCK TABLES `launchergame` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `publisher`
+-- Table structure for table `besitzt`
 --
 
-DROP TABLE IF EXISTS `publisher`;
+DROP TABLE IF EXISTS `besitzt`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `publisher` (
-  `PublisherID` int NOT NULL AUTO_INCREMENT,
-  `Name` varchar(255) NOT NULL,
-  PRIMARY KEY (`PublisherID`)
+CREATE TABLE `besitzt` (
+  `UserID` int NOT NULL,
+  `LauncherGame` int NOT NULL,
+  `PlayTime` int DEFAULT '0',
+  PRIMARY KEY (`UserID`,`LauncherGame`),
+  KEY `LauncherGameID_idx` (`LauncherGame`),
+  CONSTRAINT `LauncherGameID` FOREIGN KEY (`LauncherGame`) REFERENCES `launchergame` (`LauncherGameID`),
+  CONSTRAINT `user_fk` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `publisher`
+-- Dumping data for table `besitzt`
 --
 
-LOCK TABLES `publisher` WRITE;
-/*!40000 ALTER TABLE `publisher` DISABLE KEYS */;
-/*!40000 ALTER TABLE `publisher` ENABLE KEYS */;
+LOCK TABLES `besitzt` WRITE;
+/*!40000 ALTER TABLE `besitzt` DISABLE KEYS */;
+/*!40000 ALTER TABLE `besitzt` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Table structure for table `user`
---
-
-DROP TABLE IF EXISTS `user`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `user` (
-  `UserID` int NOT NULL AUTO_INCREMENT,
-  `UserName` varchar(255) NOT NULL,
-  `Mail` varchar(255) NOT NULL UNIQUE,
-  `Password` varchar(255) NOT NULL,
-  `CreateDate` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `FirstName` varchar(255) NOT NULL,
-  `LastName` varchar(255) NOT NULL,
-  `DateOfBirth` datetime NOT NULL,
-  `CountryID` int NOT NULL,
-  `LanguageID` int NOT NULL,
-  `LatestActivity` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `ProfilePicture` varchar(255),
-  PRIMARY KEY (`UserID`),
-  KEY `language_fk_idx` (`LanguageID`),
-  KEY `country_fk_idx` (`CountryID`),
-  CONSTRAINT `country_fk` FOREIGN KEY (`CountryID`) REFERENCES `country` (`CountryID`) ON UPDATE CASCADE,
-  CONSTRAINT `language_fk` FOREIGN KEY (`LanguageID`) REFERENCES `language` (`LanguageID`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2022-06-16 17:26:02
