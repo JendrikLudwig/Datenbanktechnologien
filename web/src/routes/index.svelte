@@ -1,6 +1,7 @@
 <script>
     import LoginProvider from "../comp/providers/login_provider.svelte"
-
+    
+    let signout //Signout Function
     let user = {};
 
     function test(text) {
@@ -12,12 +13,12 @@
 
 </script>
 
-<LoginProvider bind:user={user} let:signout={signout}>
+<LoginProvider bind:user={user} bind:signout={signout}>
 
     <h1>Wilkommen auf der Seite</h1>
     <p>{user.username}</p>
     <button on:click={() => test("UserData:")}>User access</button>
 
-    <button on:click={() => signout()}> Abmelden </button>
+    <button on:click={signout}> Abmelden </button>
 
 </LoginProvider>
