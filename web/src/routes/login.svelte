@@ -72,11 +72,85 @@
 
 
 </script>
-<style></style>
+<style>
 
-<form>
-    <input type="text" placeholder="E-Mail" bind:value={mail}/>
-    <input type="password" placeholder="Passwort" bind:value={password}>
-    <button on:click|preventDefault={signin}>Anmelden</button>
-    <p>{error}</p>
-</form>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27%27'); 
+
+
+    #page_container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        min-height: 100vh;
+
+        font-family: 'Montserrat','sans-serif';
+    }
+
+    #login_form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        border: solid 1px rgba(0, 0, 0, 0.3);
+
+    }
+
+    #login_form input {
+        height: 2rem;
+        margin: 1rem 0;
+        padding: 0 0.5rem;
+
+    }
+
+
+    .submit {
+        height: 3rem;
+        background-color: #08e1ae;
+        background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
+        color: white;
+        font-size: 1rem;
+        border: none;
+        border-radius: 0.5rem;
+        transition-duration: 0.2s;
+        font-weight: 600;
+
+    }
+
+    
+
+    .submit:hover {
+        transform: scale(1.05)
+    }
+
+    .submit:active {
+        transform: scale(0.95);
+    }
+
+    .error {
+        color: red;
+        height: 1rem;
+    }
+    
+    h2 {
+        margin: 0;
+    }
+
+
+
+</style>
+
+<div id="page_container">
+    <form id="login_form">
+        <h2>Anmelden</h2>
+        <p>Bitte melde dich mit deinen Nutzerdaten an.</p>
+        <input type="text" placeholder="E-Mail" bind:value={mail}/>
+        <input type="password" placeholder="Passwort" bind:value={password}>
+        <p class="error">{error}</p>
+        <button class="submit" on:click|preventDefault={signin}>Anmelden</button>
+        
+    </form>
+</div>
