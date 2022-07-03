@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
     import { currentUser } from '../stores/user.js';
 
     // User Store 
@@ -59,28 +60,11 @@
             error = response.body.error
             return false;
         }
-
+        //PW Korrekt: ID, Profilepic und username in user store speichern
         assignUser(JSON.stringify(response.body))
 
-        
-
-
-
-    
-
-        
-
- 
-
-        //PW Korrekt: ID, Profilepic und username in user store speichern
         // -> ReRouting auf index.svelte
-
-        
-
-        
-        
-        
-        
+        goto("/")
         
     }
 

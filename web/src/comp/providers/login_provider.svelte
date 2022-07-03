@@ -10,17 +10,38 @@
         if(data) return JSON.parse(val)
         return data
     })(val));
-    if(browser && (user == null)) goto("/login");
+    if(browser && (user == null || user == "")) goto("/login");
 
+
+
+    //User Abmelden
+    export const signout = function signout(){
+      window.location.href = "/login"
+      currentUser.set("");
+    }
 
 </script>
 
+
+<style>
+    #app_container {
+        /*CSS for every page goes here*/
+        height: 100%;
+        width: 100%;
+    }
+
+</style>
+
+
     {#if browser}
-        <slot user={user}>
+        <div id = "app_container">
+            <slot user={user}>
 
-            <p>This page is empty</p>
+                <p>This page is empty</p>
 
-        </slot>
+            </slot>
+
+        </div>
     {/if}
 
     
