@@ -25,19 +25,14 @@
 
 
 <style>
-    :global(body) {
-        margin: 0
-    }
-
-
-
-    
+       
     #app_container {
         /*CSS for every page goes here*/
         height: 100%;
         width: 100%;
         background-color: rgb(55, 63, 67);
-        margin: 0;
+        padding: 1rem;      
+
     }
 
     #load {
@@ -50,23 +45,21 @@
     }
 
 </style>
-
-
+    
     {#if browser}
-        {#if !user}
-            <div id="load">
-                <p>Lädt...</p>
-            </div>
-        {:else}
-            <div id = "app_container">
+        <div id="app_container">
+            {#if !user}
+                <div id="load">
+                    <p>Lädt...</p>
+                </div>
+            {:else}
+
                 <slot user={user}>
-
                     <p>This page is empty</p>
-
-                </slot>
-
-            </div>
-        {/if}
+                </slot>   
+            {/if}
+        </div>  
     {/if}
+
 
     
