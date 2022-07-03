@@ -25,10 +25,19 @@
 
 
 <style>
+    :global(body) {
+        margin: 0
+    }
+
+
+
+    
     #app_container {
         /*CSS for every page goes here*/
         height: 100%;
         width: 100%;
+        background-color: rgb(55, 63, 67);
+        margin: 0;
     }
 
     #load {

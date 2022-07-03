@@ -77,6 +77,8 @@
     @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27%27'); 
 
 
+
+
     #page_container {
         display: flex;
         justify-content: center;
@@ -85,7 +87,7 @@
         height: 100%;
         width: 100%;
         min-height: 100vh;
-
+        background-color: rgb(55, 63, 67);
         font-family: 'Montserrat','sans-serif';
     }
 
@@ -94,6 +96,7 @@
         flex-direction: column;
         justify-content: center;
         padding: 2rem;
+        background-color: white;
         border-radius: 0.5rem;
         border: solid 1px rgba(0, 0, 0, 0.3);
 
