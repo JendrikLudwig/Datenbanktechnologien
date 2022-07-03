@@ -27,8 +27,3 @@
   
 </LoginProvider>
 
-<style>
-  :global(body) {
-    background-color: rgb(55, 63, 67);
-  }
-</style>
