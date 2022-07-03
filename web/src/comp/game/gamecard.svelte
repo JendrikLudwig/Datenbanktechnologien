@@ -3,7 +3,7 @@
 </script>
 
 <div class="gamecard">
-  <a href="´games/${id}´">
+  <a href={`games/${id}`}>
     <slot />
     <h4>Klicke hier für mehr Infos</h4>
   </a>
