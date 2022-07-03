@@ -2,12 +2,10 @@
   export let id;
 </script>
 
-<div class="gamecard">
-  <a href={`games/${id}`}>
+<a href={`games/${id}`} class="gamecard">
     <slot />
     <h4>Klicke hier für mehr Infos</h4>
-  </a>
-</div>
+</a>
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27");
