@@ -1,5 +1,5 @@
 <script>
-  import LoginProvider from "../../comp/providers/login_provider.svelte"
+  import LoginProvider from "../../comp/providers/login_provider.svelte";
   import GameCard from "../../comp/game/gamecard.svelte";
 
   let data = [];
@@ -24,4 +24,7 @@
 </LoginProvider>
 
 <style>
+  :global(body) {
+    background-color: rgb(55, 63, 67);
+  }
 </style>
