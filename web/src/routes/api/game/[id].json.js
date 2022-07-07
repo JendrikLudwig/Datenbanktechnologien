@@ -45,7 +45,7 @@ export async function get({params}) {
     
     let game_results = await mysqlconn.query(game_query)
         .then(function([rows,fields]) {
-            return rows;
+            return rows[0];
         });
 
 
@@ -54,10 +54,20 @@ export async function get({params}) {
             return rows;
         });
     
+
+
+
+
     return {
         body: {
-            ...game_results,
-            launcher: launcher_results
+            data: {
+                ...game_results,
+                launcher: launcher_results,
+            }
+                
+            
+            
+            
         }
     }
 }
