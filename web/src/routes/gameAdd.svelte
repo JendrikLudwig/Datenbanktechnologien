@@ -1,5 +1,9 @@
 <script>
   import LoginProvider from "../comp/providers/login_provider.svelte";
+
+  function handleClick() {
+    alert("clicked");
+  }
 </script>
 
 <LoginProvider>
@@ -135,6 +139,7 @@
         Tracking
       </label><br />
     </form>
+    <button class="add" on:click={handleClick}> ADD </button>
   </div>
 </LoginProvider>
 
@@ -142,7 +147,7 @@
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27");
   .box {
     color: black;
-    background-color: rgb(20, 255, 160);
+    background-color: #14ffa0;
     height: 4.5rem;
   }
   .title {
@@ -177,6 +182,18 @@
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     margin-left: 1rem;
+    color: white;
+  }
+  button {
+    border: 0;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-weight: bold;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
+  }
+  .add {
+    background: #14ffa0;
     color: white;
   }
 </style>

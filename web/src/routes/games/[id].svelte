@@ -1,39 +1,77 @@
 <script context="module">
-  export async function load({params, fetch}) {
-      const res = await fetch(`/api/game/${params.id}.json`)
-      const data = await res.json()
+  export async function load({ params, fetch }) {
+    const res = await fetch(`/api/game/${params.id}.json`);
+    const data = await res.json();
 
-      if (res.ok) {
-          return {
-              props: {
-                  data: data.data
-              }
-          }
-      }
-      
+    if (res.ok) {
+      return {
+        props: {
+          data: data.data,
+        },
+      };
+    }
   }
-
 </script>
-
 
 <script>
   import LoginProvider from "../../comp/providers/login_provider.svelte";
-  import { browser } from '$app/env';
-
+  import { browser } from "$app/env";
 
   export let data;
-  if(browser) console.log(data);
+  if (browser) console.log(data);
 
-  function parseFeatures(ft){
-    const nB = ft.replaceAll("[","").replaceAll("]","");
-    const nA = nB.replaceAll('"',"");
-    return nA.split(",")
+  function parseFeatures(ft) {
+    const nB = ft.replaceAll("[", "").replaceAll("]", "");
+    const nA = nB.replaceAll('"', "");
+    return nA.split(",");
   }
-
-
 </script>
 
+{#if browser}
+  <LoginProvider>
+    <div id="page_container">
+      <div class="box">
+        <button
+          on:click={() => {
+            window.location.href = "/games";
+          }}
+        >
+          Zurück
+        </button>
+      </div>
 
+      <div class="title">
+        <h3>{data.title}</h3>
+      </div>
+      <p>Genre:</p>
+      <div class="data">{data.Genre}</div>
+      <p>FSK:</p>
+      <div class="data">FSK {data.fsk}</div>
+      <p>Developer:</p>
+      <div class="data">{data.developer}</div>
+      <p>Publisher:</p>
+      <div class="data">{data.publisher}</div>
+      <p>ReleaseDate:</p>
+      <div class="data">
+        Erschienen am: {new Date(data.releasedate).toLocaleDateString()}
+      </div>
+      <p>Description:</p>
+      <div class="data">{data.description}</div>
+      <p>Features:</p>
+      <div class="data">
+        {#each parseFeatures(data.features) as feature}
+          <li>{feature}</li>
+        {/each}
+      </div>
+      <p>Launcher:</p>
+      <div class="data">
+        {#each data.launcher as launcher}
+          <a class="launcher_item" href={launcher.Link}>{launcher.name} </a>
+        {/each}
+      </div>
+    </div>
+  </LoginProvider>
+{/if}
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27");
@@ -48,10 +86,15 @@
   }
 
   .box button {
-    /* Euer CSS Für den Zurückknopf kommt hier hin :) */  
+    font-family: "Montserrat", sans-serif;
+    font-weight: bolder;
+    color: white;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10%;
   }
-
-
+  .box button:hover {
+    cursor: pointer;
+  }
 
   .title {
     display: flex;
@@ -86,55 +129,12 @@
   }
 
   .launcher_item {
+    font-family: "Montserrat", sans-serif;
+    font-weight: bolder;
+    text-decoration: none;
     margin: 1rem;
-    background-color: aqua;
+    background-color: black;
+    padding: 0.5rem;
+    color: white;
   }
 </style>
-
-
-{#if browser}
-
-  <LoginProvider>
-    <div id="page_container">
-      <div class="box">
-        <button on:click={() => {window.location.href = "/games"}}> Zurück </button>
-      </div>
-
-      <div class="title">
-        <h3>{data.title}</h3>
-      </div>
-      <p>Genre:</p>
-      <div class="data">{data.Genre}</div>
-      <p>FSK:</p>
-      <div class="data">FSK {data.fsk}</div>
-      <p>Developer:</p>
-      <div class="data">{data.developer}</div>
-      <p>Publisher:</p>
-      <div class="data">{data.publisher}</div>
-      <p>ReleaseDate:</p>
-      <div class="data">Erschienen am: {new Date(data.releasedate).toLocaleDateString()}</div>
-      <p>Description:</p>
-      <div class="data">{data.description}</div>
-      <p>Features:</p>
-      <div class="data">
-
-        {#each parseFeatures(data.features) as feature}
-
-          <li>{feature}</li>
-          
-        {/each}
-
-
-      </div>
-      <p>Launcher:</p>
-      <div class="data">
-        
-        {#each data.launcher as launcher}
-          <a class="launcher_item" href="{launcher.Link}">{launcher.name} </a>
-        {/each}
-
-      </div>
-    </div>
-  </LoginProvider>
-
-{/if}
