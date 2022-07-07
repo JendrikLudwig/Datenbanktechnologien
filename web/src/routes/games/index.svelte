@@ -6,6 +6,8 @@
 
 
   let data = [];
+  let displaydata = []
+  let input;
 
   async function loadgames() {
     const response = await fetch("./api/game.json").then((res) => {
@@ -13,17 +15,49 @@
     });
 
     data = response;
+    displaydata = response
   }
 
- if (browser) loadgames() 
+
+
+  function search() {
+    displaydata = data.filter(x => (x.Title).toLowerCase().includes(input.toLowerCase()))
+  }
+
+  if (browser) {
+    loadgames()
+  } 
 
 </script>
+
+<style>
+
+  #page_container {
+    min-height: 100vh;
+
+
+  }
+
+
+
+</style>
+
+
 <LoginProvider>
-    {#each data as game}
+ <div id='page_container'>
+
+  <input type="text" bind:value={input} on:input={search}/>
+  {#each displaydata as game}
     <GameCard id={game.GameID}>
       {game.Title}
     </GameCard>
+    
   {/each}
+  {#if displaydata.length == 0}
+     <p>Empty State</p>
+  {/if}
+
+ </div>
   
 </LoginProvider>
 

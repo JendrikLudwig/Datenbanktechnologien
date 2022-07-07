@@ -72,3 +72,25 @@ export async function get({params}) {
     }
 }
 
+export async function del({params}) {
+
+    const data = await request.json();
+    const launcher_query = `
+    
+        DELETE FROM
+            launchergame AS lg
+                JOIN
+            Launcher AS l ON lg.LauncherID = l.LauncherID
+        WHERE
+            gameid = ${params.id}
+
+    `
+
+    let game_results = await mysqlconn.query(game_query)
+        .then(function([rows,fields]) {
+            return rows[0];
+        });
+
+
+
+}
