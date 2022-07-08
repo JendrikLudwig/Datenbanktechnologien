@@ -4,8 +4,6 @@
 
   import MultiSelect from 'svelte-multiselect'
 
-  const ui_libs = [`Svelte`, `React`, `Vue`, `Angular`, `...`]
-
   let selected_features = []
 
   let genres = [];
@@ -49,6 +47,14 @@
     <form action="" method="">
       <p>Titel</p>
       <input type="text" name="title" value="" size="30" maxlength="50" />
+      <p>Description</p>
+      <textarea name="description" rows="4" cols="50" />
+      
+      <div id="features_container">
+        <p>Features</p>
+        <!-- Dokumentation: https://svelte-multiselect.netlify.app/ -->
+        <MultiSelect bind:selected_features options={features} allowUserOptions={true}/> 
+      </div>
       <p>Genre</p>
       <select name="genre_select">
           {#each genres as genre}
@@ -66,18 +72,33 @@
         <option value="18"> 18 </option>
       </select>
 
-      <p>Developer</p>
-      <select name="dev_select">
-        {#each devs as dev}
-          <option value={dev.DeveloperID}>{dev.Name}</option>
-        {/each}
-      </select>
-      <p>Publisher</p>
-      <select name="publisher_select">
-        {#each publisher as pub}
-          <option value={pub.PublisherID}>{pub.Name}</option>
-        {/each}
-      </select>
+      <div id="dev_pub_container">
+
+        <div>
+
+          <p>Developer</p>
+          <select name="dev_select">
+            {#each devs as dev}
+              <option value={dev.DeveloperID}>{dev.Name}</option>
+            {/each}
+          </select>
+
+        </div>
+
+        <div>
+          <p>Publisher</p>
+          <select name="publisher_select">
+            {#each publisher as pub}
+              <option value={pub.PublisherID}>{pub.Name}</option>
+            {/each}
+          </select>
+        </div>
+        
+      
+
+      </div>
+
+      
       <p>ReleaseDate</p>
       <input
         type="date"
@@ -86,14 +107,9 @@
         min="1900-01-01"
         max="2022-07-15"
       />
-      <p>Description</p>
-      <textarea name="description" rows="4" cols="50" />
-      <p>Features</p>
+      
 
-
-      <!-- Dokumentation: https://svelte-multiselect.netlify.app/ -->
-
-      <MultiSelect bind:selected_features options={features} allowUserOptions={true}/> 
+      
       </form>
     <button class="add" on:click={handleClick}> ADD </button>
   </div>
@@ -101,6 +117,11 @@
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27");
+  
+  #page_container {
+    min-height: 120vh;
+  }
+  
   .box {
     color: black;
     background-color: #14ffa0;
@@ -151,5 +172,20 @@
   .add {
     background: #14ffa0;
     color: white;
+  }
+
+  #features_container {
+    width: 25rem;
+    margin-left: 4.5rem;
+
+  }
+
+  #dev_pub_container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  :global(div.multiselect > ul.options) {
+    max-height: var(--sms-options-max-height, 30vh);
   }
 </style>
