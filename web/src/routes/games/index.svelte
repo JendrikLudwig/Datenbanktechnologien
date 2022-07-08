@@ -26,6 +26,8 @@
   if (browser) {
     loadgames();
   }
+
+  
 </script>
 
 <LoginProvider>
