@@ -75,18 +75,16 @@ export async function get({params}) {
 export async function del({params}) {
 
     const data = await request.json();
-    const launcher_query = `
+    const gamedel_query = `
     
         DELETE FROM
-            launchergame AS lg
-                JOIN
-            Launcher AS l ON lg.LauncherID = l.LauncherID
+            game
         WHERE
             gameid = ${params.id}
 
     `
 
-    let game_results = await mysqlconn.query(game_query)
+    let game_results = await mysqlconn.query(gamedel_query)
         .then(function([rows,fields]) {
             return rows[0];
         });
