@@ -72,12 +72,6 @@ export async function get() {
         
     });
 
-    console.log(usedFeatures);
-
-    
-    
-
-
 
     const return_data = {
         genre: genre_results,
@@ -85,6 +79,8 @@ export async function get() {
         publisher: publisher_results,
         features: usedFeatures
     }
+
+    
 
 
     return {

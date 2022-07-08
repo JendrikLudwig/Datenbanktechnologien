@@ -11,12 +11,15 @@
 
 <LoginProvider bind:user bind:signout>
   <div id="page_container">
-    <div class="box" />
+    <div class="box">
+      <p class="username"> {user.username} </p>
+      <img src={user.pic} alt=""/>
+
+    </div>
     <div class="title">
       <h1>Willkommen bei DBT!</h1>
     </div>
-    <p>Angemeldeter User:</p>
-    <p class="username">--- {user.username} ---</p>
+     
     <button class="gamebutton" on:click={() => {window.location.href = "/games"}}>Zu den Spielen</button>
     <button class="signoutbutton" on:click={signout}> Abmelden </button>
     <div class="footer">
@@ -49,7 +52,20 @@
     height: 2.5rem;
     width: calc(100% - 2rem);
     justify-content: flex-end;
+    align-items: center;
   }
+
+  .box img {
+    height: 3rem;
+    border-radius: 100%;
+    margin-left: 1rem;
+  }
+
+  .box p {
+    color: black;
+  }
+
+
   p {
     color: white;
     font-family: "Montserrat", sans-serif;
