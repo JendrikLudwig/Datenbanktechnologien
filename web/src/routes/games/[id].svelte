@@ -17,6 +17,14 @@
   import LoginProvider from "../../comp/providers/login_provider.svelte";
   import { browser } from "$app/env";
 
+  //FSK import
+  import FSK0 from "../../lib/fsk_img/fsk0.jpg"
+  import FSK6 from "../../lib/fsk_img/fsk6.jpg"
+  import FSK12 from "../../lib/fsk_img/fsk12.jpg"
+  import FSK16 from "../../lib/fsk_img/fsk16.jpg"
+  import FSK18 from "../../lib/fsk_img/fsk18.jpg"
+
+
   export let data;
   if (browser) console.log(data);
 
@@ -26,6 +34,10 @@
     return nA.split(",");
   }
 </script>
+
+
+
+
 
 {#if browser}
   <LoginProvider>
@@ -41,12 +53,23 @@
       </div>
 
       <div class="title">
+        
+        {#if data.fsk == 0}
+          <img class="fsk" src={FSK0} alt="FSK 0"/>
+        {:else if data.fsk == 6}
+          <img class="fsk" src={FSK6} alt="FSK 0"/>
+        {:else  if data.fsk == 12}
+          <img class="fsk" src={FSK12} alt="FSK 0"/>
+        {:else if data.fsk == 16}
+          <img class="fsk" src={FSK16} alt="FSK 0"/>
+        {:else if data.fsk == 18}
+          <img class="fsk" src={FSK18} alt="FSK 0"/>
+        {/if}
+
         <h3>{data.title}</h3>
       </div>
       <p>Genre:</p>
       <div class="data">{data.Genre}</div>
-      <p>FSK:</p>
-      <div class="data">FSK {data.fsk}</div>
       <p>Developer:</p>
       <div class="data">{data.developer}</div>
       <p>Publisher:</p>
@@ -56,7 +79,7 @@
         Erschienen am: {new Date(data.releasedate).toLocaleDateString()}
       </div>
       <p>Description:</p>
-      <div class="data">{data.description}</div>
+      <div class="data">{@html data.description}</div>
       <p>Features:</p>
       <div class="data">
         {#each parseFeatures(data.features) as feature}
@@ -65,13 +88,17 @@
       </div>
       <p>Launcher:</p>
       <div class="data">
-        {#each data.launcher as launcher}
-          <a class="launcher_item" href={launcher.Link}>{launcher.name} </a>
-        {/each}
+        <div id="launcher_container">
+          {#each data.launcher as launcher}
+            <a  href={launcher.Link} target="_blank"><div class="launcher_item">{launcher.name}</div></a>
+          {/each}
+        </div>
+        
       </div>
     </div>
   </LoginProvider>
 {/if}
+
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27");
@@ -128,7 +155,17 @@
     padding: 0 0 3rem 0;
   }
 
-  .launcher_item {
+  #launcher_container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .launcher_item{
     font-family: "Montserrat", sans-serif;
     font-weight: bolder;
     text-decoration: none;
@@ -136,5 +173,25 @@
     background-color: black;
     padding: 0.5rem;
     color: white;
+    transition-duration: 0.2s;
+    border-radius: .5rem;
+    
   }
+
+  .launcher_item:hover {
+    transform: scale(.95);
+    color: rgba(255, 255, 255,0.75);
+  }
+
+  .launcher_item:active {
+    transform: scale(.85);
+  }
+
+  .fsk {
+    height: 3rem;
+    border-radius: 0.2rem;
+    margin-right: 1rem;
+  }
+
+  
 </style>

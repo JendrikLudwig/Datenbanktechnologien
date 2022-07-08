@@ -17,9 +17,7 @@
     </div>
     <p>Angemeldeter User:</p>
     <p class="username">--- {user.username} ---</p>
-    <button class="gamebutton" on:click={() => test("UserData:")}
-      >Zu den Spielen</button
-    >
+    <button class="gamebutton" on:click={() => {window.location.href = "/games"}}>Zu den Spielen</button>
     <button class="signoutbutton" on:click={signout}> Abmelden </button>
     <div class="footer">
       <p class="description">a project by</p>

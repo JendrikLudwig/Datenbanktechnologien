@@ -43,6 +43,7 @@
     <input
       type="text"
       class="searchfield"
+      placeholder="Suche nach Spielen..."
       bind:value={input}
       on:input={search}
     />
@@ -65,7 +66,14 @@
     padding-bottom: 5rem;
   }
   .searchfield {
+    height: 2rem;
+    width: 25rem;
+    margin: 1rem 0;
+    padding: 0 0.5rem;
+
   }
+
+
   .box {
     display: flex;
     padding: 1rem;
