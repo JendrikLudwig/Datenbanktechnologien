@@ -65,6 +65,11 @@ export async function get() {
             return rows;
         });
 
+    let launcher_results = await mysqlconn.query(launcher_query)
+    .then(function([rows]) {
+        return rows;
+    });
+
 
 
     let usedFeatures = []  
@@ -83,6 +88,7 @@ export async function get() {
         genre: genre_results,
         developer: dev_results,
         publisher: publisher_results,
+        launcher: launcher_results,
         features: usedFeatures
     }
 

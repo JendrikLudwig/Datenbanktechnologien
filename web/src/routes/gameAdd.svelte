@@ -11,8 +11,7 @@
   let features = [];
   let publisher = [];
   let devs = [];
-  let launcher = [{id: 0, name:"Microsoft"},{id: 1, name:"Steam"},];
-
+  let launcher = []
 
   //Input Data
   let input_name;
@@ -31,7 +30,7 @@
   
   function parseOption(arrObj) {
     const optArr = arrObj.map(elem => {
-      return new Option(elem.name, elem.id)
+      return new Option(elem.Name, elem.LauncherID - 1)
     })
 
     return optArr
@@ -48,6 +47,7 @@
     features = response.features;
     publisher = response.publisher;
     devs = response.developer
+    launcher = response.launcher
 
   }
 
@@ -58,6 +58,9 @@
   }
 
   function handleClick() {
+
+    validateInputs()
+
     const data = {
         input_name,
         input_desc,
@@ -84,7 +87,44 @@
       }
     })
 
-     return newStruct.filter(x => selected_launcher.includes(String(x.LauncherID)))
+     return newStruct.filter(x => selected_launcher.includes(String(x.LauncherID -1)))
+  }
+
+
+  function validateInputs() {
+    let errorArr = []
+    
+    if(!input_name) errorArr.push("Name fehlt")
+    if(!input_desc) errorArr.push("Beschreibung fehlt")
+    if(input_features.length == 0) errorArr.push("Ein Feature muss angegeben werden")
+
+    if (selected_launcher.length == 0) {
+      errorArr.push("Ein Launcher muss ausgewählt werden")
+    } else if(input_launcher.filter(x => x =! null).length !=  selected_launcher.length) {
+      console.log(input_launcher.filter(x => x =! null).length, selected_launcher.length);
+      errorArr.push("Mindestens ein Launcherlink fehlt")
+    } else if(getLauncherInputs().filter(el => el.url.length == 0).length != 0) {
+      console.log(getLauncherInputs().filter(el => el.url.length == 0).length != 0);
+      errorArr.push("Mindestens ein Launcherlink fehlt")
+    }
+
+
+
+    //Launcher check
+    if(!input_genre) errorArr.push("Genre fehlt")
+    if(!input_fsk) errorArr.push("FSK Zertifizierung fehlt")
+    if(!input_dev) errorArr.push("Ein Entwickler muss angegeben werden")
+    if(!input_pub) errorArr.push("Publisher fehlt")
+    if(!input_release) errorArr.push("Releasedate fehlt")
+
+
+    
+
+
+    error = errorArr.join(", ")
+    if(errorArr.length == 0) return true
+    return false
+    
   }
 
 
@@ -121,8 +161,8 @@
 
           {#each selected_launcher as la }
             <div id="launcher_url_input_element">
-              <div class="launcher_label">{launcher[la].name}</div>
-              <input bind:value={input_launcher[launcher[la].id]} placeholder="Link zum {launcher[la].name}-Launcher"/>
+              <div class="launcher_label">{launcher[la].Name}</div>
+              <input bind:value={input_launcher[launcher[la].LauncherID]} placeholder="Link zum {launcher[la].Name}-Launcher"/>
             </div>
           {/each}
           
@@ -312,7 +352,8 @@
 
   .error {
       color: red;
-      height: 1rem;
+      min-height: 1rem;
+      margin: 0 0 2rem 0;
   }
   
   h2 {
