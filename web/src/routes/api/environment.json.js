@@ -36,7 +36,13 @@ export async function get() {
             GAME
         
     `
-
+    const launcher_query = `
+        SELECT 
+            *
+        FROM
+            LAUNCHER
+        
+    `
 
 
     let genre_results = await mysqlconn.query(genre_query)

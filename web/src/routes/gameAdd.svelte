@@ -4,12 +4,36 @@
 
   import MultiSelect from 'svelte-multiselect'
 
-  let selected_features = []
+  let selected_launcher = []
 
+  //Fetched Data
   let genres = [];
   let features = [];
   let publisher = [];
   let devs = [];
+  let launcher = [{id: 0, name:"Microsoft"},{id: 1, name:"Steam"},];
+
+
+  //Input Data
+  let input_name;
+  let input_desc;
+  let input_features;
+  let input_genre;
+  let input_fsk;
+  let input_dev;
+  let input_pub;
+  let input_release;
+  let input_launcher = [];
+
+  
+  function parseOption(arrObj) {
+    const optArr = arrObj.map(elem => {
+      return new Option(elem.name, elem.id)
+    })
+
+    return optArr
+    
+  }
 
 
   async function loadEnv() {
@@ -31,7 +55,33 @@
   }
 
   function handleClick() {
-    alert("clicked");
+    const data = {
+        input_name,
+        input_desc,
+        input_features,
+        input_genre,
+        input_fsk,
+        input_dev,
+        input_pub,
+        input_release,
+        launcher: getLauncherInputs()
+    }
+
+
+    console.log(data);
+  }
+
+
+  function getLauncherInputs() {
+
+    const newStruct = input_launcher.map(x => {
+      return {
+        LauncherID: input_launcher.indexOf(x),
+        url: x
+      }
+    })
+
+     return newStruct.filter(x => selected_launcher.includes(String(x.LauncherID)))
   }
 
 
@@ -46,17 +96,38 @@
     </div>
     <form action="" method="">
       <p>Titel</p>
-      <input type="text" name="title" value="" size="30" maxlength="50" />
+      <input type="text" name="title" size="30" maxlength="50" bind:value={input_name}/>
       <p>Description</p>
-      <textarea name="description" rows="4" cols="50" />
+      <textarea name="description" rows="4" cols="50" bind:value={input_desc}/>
       
       <div id="features_container">
         <p>Features</p>
         <!-- Dokumentation: https://svelte-multiselect.netlify.app/ -->
-        <MultiSelect bind:selected_features options={features} allowUserOptions={true}/> 
+        <MultiSelect bind:selectedValues={input_features} options={features} allowUserOptions={true}/> 
+      </div>
+
+      <div id="features_container">
+        <p>Launcher</p>
+        <!-- Dokumentation: https://svelte-multiselect.netlify.app/ -->
+
+        <MultiSelect bind:selectedValues={selected_launcher} options={parseOption(launcher)}></MultiSelect>
+
+        {#if selected_launcher.length != 0}
+
+          Bitte gib den Link zur Launcherstore Seite an.
+
+          {#each selected_launcher as la }
+            <div id="launcher_url_input_element">
+              <div class="label">{launcher[la].name}</div>
+              <input bind:value={input_launcher[launcher[la].id]} placeholder="Link zum {launcher[la].name}-Launcher"/>
+            </div>
+          {/each}
+          
+        {/if}
+        
       </div>
       <p>Genre</p>
-      <select name="genre_select">
+      <select name="genre_select" bind:value={input_genre}>
           {#each genres as genre}
             <option value={genre.GenreID}>{genre.Name}</option>
           {/each}
@@ -64,7 +135,7 @@
 
       
       <p>FSK</p>
-      <select name="fsk_select">
+      <select name="fsk_select" bind:value={input_fsk}>
         <option value="0"> 0 </option>
         <option value="6"> 6 </option>
         <option value="12"> 12 </option>
@@ -77,7 +148,7 @@
         <div>
 
           <p>Developer</p>
-          <select name="dev_select">
+          <select name="dev_select" bind:value={input_dev}>
             {#each devs as dev}
               <option value={dev.DeveloperID}>{dev.Name}</option>
             {/each}
@@ -87,7 +158,7 @@
 
         <div>
           <p>Publisher</p>
-          <select name="publisher_select">
+          <select name="publisher_select" bind:value={input_pub}>
             {#each publisher as pub}
               <option value={pub.PublisherID}>{pub.Name}</option>
             {/each}
@@ -100,16 +171,8 @@
 
       
       <p>ReleaseDate</p>
-      <input
-        type="date"
-        name="releasedate"
-        value="2000-01-01"
-        min="1900-01-01"
-        max="2022-07-15"
-      />
-      
-
-      
+      <input type="date" name="releasedate" bind:value={input_release} min="1900-01-01" max="2022-07-15"/>
+          
       </form>
     <button class="add" on:click={handleClick}> ADD </button>
   </div>
