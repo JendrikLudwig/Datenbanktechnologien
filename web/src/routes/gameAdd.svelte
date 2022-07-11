@@ -25,6 +25,9 @@
   let input_release;
   let input_launcher = [];
 
+  //Error
+  let error = ""
+
   
   function parseOption(arrObj) {
     const optArr = arrObj.map(elem => {
@@ -91,10 +94,10 @@
   <div id="page_container">
     <div class="box" />
 
-    <div class="title">
-      <h3>Spiel hinzufügen</h3>
-    </div>
-    <form action="" method="">
+    <form id="add_form">
+      <h2>Spiel hinzufügen</h2>
+      <p>Bitte gib alle relevanten Daten an.</p>
+      <hr>
       <p>Titel</p>
       <input type="text" name="title" size="30" maxlength="50" bind:value={input_name}/>
       <p>Description</p>
@@ -118,7 +121,7 @@
 
           {#each selected_launcher as la }
             <div id="launcher_url_input_element">
-              <div class="label">{launcher[la].name}</div>
+              <div class="launcher_label">{launcher[la].name}</div>
               <input bind:value={input_launcher[launcher[la].id]} placeholder="Link zum {launcher[la].name}-Launcher"/>
             </div>
           {/each}
@@ -172,9 +175,12 @@
       
       <p>ReleaseDate</p>
       <input type="date" name="releasedate" bind:value={input_release} min="1900-01-01" max="2022-07-15"/>
+      
+      <p class="error">{error}</p>     
+      
+      <button class="submit" on:click|preventDefault={handleClick}>Spiel hinzufügen</button>
           
-      </form>
-    <button class="add" on:click={handleClick}> ADD </button>
+    </form>
   </div>
 </LoginProvider>
 
@@ -182,48 +188,39 @@
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27");
   
   #page_container {
-    min-height: 120vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        min-height: 100vh;
+        background-color: rgb(55, 63, 67);
+        font-family: 'Montserrat','sans-serif';
+    }
+
+  p {
+    margin: 1rem 0 0 0;
   }
+
   
   .box {
+    display: flex;
     color: black;
     background-color: #14ffa0;
     height: 4.5rem;
+    width: 100%;
   }
-  .title {
-    display: flex;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    font-size: xx-large;
-    font-weight: bold;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    height: 4.5rem;
-    width: fit-content;
-    padding: 1rem 2rem;
-    margin-top: 0px;
-  }
-  p {
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    font-size: 20px;
-    margin-left: 4.5rem;
-  }
+
+
+
   input,
   textarea,
   select {
     font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    margin-left: 4.5rem;
+
   }
-  label {
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    margin-left: 1rem;
-    color: white;
-  }
+
   button {
     border: 0;
     cursor: pointer;
@@ -232,23 +229,117 @@
     font-weight: bold;
     box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);
   }
-  .add {
-    background: #14ffa0;
-    color: white;
-  }
 
   #features_container {
-    width: 25rem;
-    margin-left: 4.5rem;
+    width: 100%;
 
   }
 
   #dev_pub_container {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #dev_pub_container div {
+    display: flex;
+    flex-direction: column;
+    width: calc(50% - 1rem);
   }
 
   :global(div.multiselect > ul.options) {
     max-height: var(--sms-options-max-height, 30vh);
   }
+
+  :global(div.multiselect) {
+    width: 100%;
+  }
+
+
+  #add_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    margin: 2rem;
+    width: 50rem;
+
+  }
+
+  #add_form input, #add_form select {
+      height: 2rem;
+      margin: 1rem 0;
+      padding: 0 0.5rem;
+      border: solid 1pt lightgrey;
+      border-radius: 3pt;
+  }
+
+  #add_form textarea {
+      height: 5rem;
+      margin: 1rem 0;
+      padding: 0.5rem;
+      resize: vertical;
+      border: solid 1pt lightgrey;
+      border-radius: 3pt;
+  }
+
+
+  .submit {
+      height: 3rem;
+      background-color: #08e1ae;
+      background-image: linear-gradient(315deg, #08e1ae 0%, #98de5b 74%);
+      color: white;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      transition-duration: 0.2s;
+      font-weight: 600;
+
+  }
+
+  
+
+  .submit:hover {
+      transform: scale(1.05)
+  }
+
+  .submit:active {
+      transform: scale(0.95);
+  }
+
+  .error {
+      color: red;
+      height: 1rem;
+  }
+  
+  h2 {
+      margin: 0;
+  }
+
+  #launcher_url_input_element {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+  }
+
+  #launcher_url_input_element input {
+    width: 70%;
+    margin: 0;
+  }
+
+  .launcher_label {
+    background-color: black;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 3pt;
+  }
+
+
+
+
 </style>
