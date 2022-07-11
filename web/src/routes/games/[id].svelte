@@ -33,11 +33,13 @@
     const nA = nB.replaceAll('"', "");
     return nA.split(",");
   }
+  function deleteButtonHandler() {
+    if (confirm("Möchtest du das Spiel wirklich löschen?") == true)
+      response = fetch("./api/game.json", {method: DELETE}).then(res => res.text())
+  }
 </script>
 
-
-
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {#if browser}
   <LoginProvider>
@@ -92,8 +94,8 @@
           {#each data.launcher as launcher}
             <a  href={launcher.Link} target="_blank"><div class="launcher_item">{launcher.name}</div></a>
           {/each}
+          <button class="deletebutton" on:click={deleteButtonHandler}><i class="fa fa-trash"></i></button>
         </div>
-        
       </div>
     </div>
   </LoginProvider>
@@ -192,6 +194,20 @@
     border-radius: 0.2rem;
     margin-right: 1rem;
   }
+  .deletebutton {
+    background-color: rgb(255, 30, 124);
+    border-radius: 50%;
+    border-color: transparent;
+    color: white;
+    cursor: pointer;
+    height: 7rem;
+    width: 7rem;
+    font-size: 2.5rem;
+    margin-left: 45rem;
+  }
 
+  .deletebutton:hover {
+    background-color: rgb(255, 114, 173);
+  }
   
 </style>
