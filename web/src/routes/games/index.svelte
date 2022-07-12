@@ -26,9 +26,12 @@
   if (browser) {
     loadgames();
   }
-
-  
 </script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 
 <LoginProvider>
   <div id="page_container">
@@ -49,6 +52,12 @@
       bind:value={input}
       on:input={search}
     />
+    <button
+      class="addbutton"
+      on:click={() => {
+        window.location.href = "/add";
+      }}><i class="fa fa-plus" /></button
+    >
     {#each displaydata as game}
       <GameCard id={game.GameID}>
         {game.Title}
@@ -72,9 +81,7 @@
     width: 25rem;
     margin: 1rem 0;
     padding: 0 0.5rem;
-
   }
-
 
   .box {
     display: flex;
@@ -104,5 +111,18 @@
   .empty {
     font-size: 20px;
     color: rgb(245, 118, 14);
+  }
+  .addbutton {
+    background-color: rgb(169, 255, 30);
+    border-color: transparent;
+    color: white;
+    cursor: pointer;
+    height: 2.3rem;
+    width: 2.3rem;
+    margin-left: 5rem;
+  }
+
+  .addbutton:hover {
+    background-color: rgb(196, 255, 173);
   }
 </style>
