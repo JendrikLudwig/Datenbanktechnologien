@@ -104,7 +104,7 @@
       console.log(input_launcher.filter(x => x =! null).length, selected_launcher.length);
       errorArr.push("Mindestens ein Launcherlink fehlt")
     } else if(getLauncherInputs().filter(el => el.url.length == 0).length != 0) {
-      console.log(getLauncherInputs().filter(el => el.url.length == 0).length != 0);
+      console.log(getLauncherInputs().filter(el => el.url.length == 0).length != 0)
       errorArr.push("Mindestens ein Launcherlink fehlt")
     }
 
