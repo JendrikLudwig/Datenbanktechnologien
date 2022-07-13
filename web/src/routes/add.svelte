@@ -84,9 +84,9 @@
   }
 
   function getLauncherInputs() {
-    const newStruct = input_launcher.map((x) => {
+    const newStruct = input_launcher.map((x, index) => {
       return {
-        LauncherID: input_launcher.indexOf(x),
+        LauncherID: index,
         url: x,
       };
     });
