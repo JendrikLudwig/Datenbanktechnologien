@@ -191,15 +191,6 @@
         {/each}
       </select>
 
-      <p>FSK</p>
-      <select name="fsk_select" bind:value={input_fsk}>
-        <option value="0"> 0 </option>
-        <option value="6"> 6 </option>
-        <option value="12"> 12 </option>
-        <option value="16"> 16 </option>
-        <option value="18"> 18 </option>
-      </select>
-
       <div id="dev_pub_container">
         <div>
           <p>Developer</p>
@@ -218,6 +209,20 @@
             {/each}
           </select>
         </div>
+
+        <div>
+
+          <p>FSK</p>
+          <select name="fsk_select" bind:value={input_fsk}>
+            <option value="0"> 0 </option>
+            <option value="6"> 6 </option>
+            <option value="12"> 12 </option>
+            <option value="16"> 16 </option>
+            <option value="18"> 18 </option>
+          </select>
+
+        </div>
+
       </div>
 
       <p>ReleaseDate</p>
@@ -257,15 +262,6 @@
     margin: 1rem 0 0 0;
   }
 
-  .box {
-    display: flex;
-    padding: 1rem;
-    color: black;
-    background-color: rgb(20, 255, 160);
-    height: 2.5rem;
-    width: calc(100% - 2rem);
-    justify-content: flex-end;
-  }
 
   input,
   textarea,
@@ -296,7 +292,7 @@
   #dev_pub_container div {
     display: flex;
     flex-direction: column;
-    width: calc(50% - 1rem);
+    width: calc(33.333% - 1rem);
   }
 
   :global(div.multiselect > ul.options) {

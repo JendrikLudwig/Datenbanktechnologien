@@ -13,11 +13,13 @@
     <Box user={user}>
       <button class="sign_out_button" on:click={signout}><i class="fa fa-sign-out" aria-hidden="true"></i>Abmelden</button>
     </Box>
+    
     <div class="title">
       <h1>Willkommen bei GameBase!</h1>
     </div>
-     
+      
     <button class="goto_games_button" on:click={() => {window.location.href = "/games"}}>Zu den Spielen</button>
+  
     <div class="footer">
       <p class="description">a project by</p>
       <p class="descriptionnames">
@@ -34,6 +36,7 @@
     margin: auto;
     text-align: center;
   }
+
   .title {
     margin-top: 10rem;
     color: white;
@@ -73,6 +76,7 @@
     padding: 0 1.5rem;
     border: none;
     transition-duration: 0.2s;
+    margin: 5rem 0 0 0;
   }
 
   .sign_out_button:hover, .goto_games_button:hover {
