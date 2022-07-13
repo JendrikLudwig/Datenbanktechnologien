@@ -3,6 +3,7 @@ Von Jendrik Ludwig, Tristan Grobasch, Johannes Jäger
 
 # Inhalt
  - [Beschreibung](#beschreibung)
+ - [Nutzung des Frontendes](#nutzung-des-frontendes)
  - [Installation](#installation)
  - [Techstack](#tech-stack)
  - [Features](#features)
