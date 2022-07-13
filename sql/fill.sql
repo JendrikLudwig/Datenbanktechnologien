@@ -32,8 +32,8 @@ VALUES
     "Miroslawa",
     "Reichmann",
     "1998-03-29 13:23:54",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/women/68.jpg"
   ),
   (
@@ -45,8 +45,8 @@ VALUES
     "Hermann",
     "Fleckenstein",
     "1952-03-19 13:49:46",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/men/67.jpg"
   ),
   (
@@ -58,8 +58,8 @@ VALUES
     "Ibrahim",
     "Renken",
     "1970-01-29 09:08:26",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/men/11.jpg"
   ),
   (
@@ -71,8 +71,8 @@ VALUES
     "Edeltraut",
     "Wenig",
     "1959-06-09 18:30:29",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/women/88.jpg"
   ),
   (
@@ -84,8 +84,8 @@ VALUES
     "Darko",
     "Wege",
     "1982-07-11 14:50:51",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/men/6.jpg"
   ),
   (
@@ -97,8 +97,8 @@ VALUES
     "Rosi",
     "Jacob",
     "1966-07-02 05:11:36",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/women/40.jpg"
   ),
   (
@@ -110,8 +110,8 @@ VALUES
     "Eckard",
     "Schnoor",
     "1987-02-27 19:34:54",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/men/17.jpg"
   ),
   (
@@ -123,8 +123,8 @@ VALUES
     "Elenore",
     "Grabow",
     "1957-02-13 09:51:02",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/women/42.jpg"
   ),
   (
@@ -136,8 +136,8 @@ VALUES
     "Laurenz",
     "Hilger",
     "1964-05-25 07:23:10",
-    "65",
-    "11",
+    "64",
+    "10",
     "https://randomuser.me/api/portraits/med/men/88.jpg"
   ),
   (
@@ -448,8 +448,8 @@ VALUES
     "Eitel",
     "Heinecke",
     "1994-11-13 00:37:45",
-    "65",
-    "11",
+    "83",
+    "22",
     "https://randomuser.me/api/portraits/med/men/7.jpg"
   ),
   (
@@ -461,8 +461,8 @@ VALUES
     "Centa",
     "Strauch",
     "1950-11-08 19:30:46",
-    "65",
-    "11",
+    "83",
+    "22",
     "https://randomuser.me/api/portraits/med/women/76.jpg"
   ),
   (
@@ -474,8 +474,8 @@ VALUES
     "Heinz-Walter",
     "Stroh",
     "1973-06-28 15:18:30",
-    "65",
-    "11",
+    "83",
+    "22",
     "https://randomuser.me/api/portraits/med/men/74.jpg"
   ),
   (
@@ -487,8 +487,8 @@ VALUES
     "Hans-Theo",
     "Severin",
     "1991-06-05 11:53:42",
-    "65",
-    "11",
+    "83",
+    "22",
     "https://randomuser.me/api/portraits/med/men/64.jpg"
   ),
   (
@@ -500,8 +500,8 @@ VALUES
     "Alma",
     "Metzler",
     "1949-10-16 18:05:05",
-    "65",
-    "11",
+    "83",
+    "22",
     "https://randomuser.me/api/portraits/med/women/58.jpg"
   ),
   (
