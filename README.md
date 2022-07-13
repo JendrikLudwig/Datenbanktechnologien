@@ -20,6 +20,11 @@ In der folgenden README wird nur das Frontend des Projektes thematisiert. Ein Gi
 
 Ausgangslage dieser `README.md` (im o.g. Repository) ist der Ordner [web](https://github.com/JendrikLudwig/Datenbanktechnologien/tree/main/web).
 
+## Nutzung des Frontendes
+Sie können sich mit folgenden Daten im Webfrontend anmelden:
+- E-Mail: miroslawa.reichmann@example.com
+- Passwort: 85ca9d569762f02f36000944d9462d7b21a368a1
+
 ## Installation
 
 
@@ -61,6 +66,7 @@ Starten Sie den Server:
 ```bash
   npm start
 ```
+
 
 
 ## Tech-Stack
@@ -117,6 +123,7 @@ Folgende Features sind in unserem Frontend umgesetzt:
 Anmelden in das Webfrontend über Nutzerdaten
 - EMail-Adresse
 - Passwort
+
 ```
   http://localhost:3000/login
 ```
