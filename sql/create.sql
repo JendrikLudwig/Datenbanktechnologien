@@ -316,7 +316,7 @@ LOCK TABLES `besitzt` WRITE;
 /*!40000 ALTER TABLE `besitzt` ENABLE KEYS */;
 UNLOCK TABLES;
 
-
+DELIMITER $$
 CREATE PROCEDURE `getFriendsOfUser`(
     IN SearchedUserID INT,
     OUT FriendsUserID INT
@@ -334,9 +334,10 @@ FROM befreundet_mit
 WHERE FirstUserID = SearchedUserID
 
 ORDER BY FriendsOfUser ASC;
-    
-END;
 
+END$$
+
+DELIMITER $$
 CREATE PROCEDURE `getOwnedGamesOfUser`(
     IN SearchedUserID INT,
     OUT GameName VARCHAR(50)
@@ -355,9 +356,10 @@ WHERE
     UserID = SearchedUserID
 
 ORDER BY b.title ASC;
-    
-END;
 
+END$$
+
+DELIMITER $$
 CREATE PROCEDURE `getUserByCountry`(
     IN SearchedCountry VARCHAR(50),
     OUT SearchedUser VARCHAR(50)
@@ -370,9 +372,10 @@ BEGIN
     WHERE CountryName = SearchedCountry
     
     ORDER BY UserName ASC;
-    
-END;
 
+END$$
+
+DELIMITER $$
 CREATE PROCEDURE `getUserByLauncherGame`(
     IN SearchedUserID INT,
     IN LauncherGameID INT,
@@ -392,8 +395,9 @@ WHERE UserID IN (
 )
 AND LauncherGame = LauncherGameID;
 
-END;
+END$$
 
+DELIMITER $$
 CREATE FUNCTION `getGameCountOfUser`(
     SearchedUserID INT
 ) RETURNS int
@@ -416,8 +420,9 @@ WHERE
     
 RETURN (GameCount);
 
-END;
+END$$
 
+DELIMITER $$
 CREATE FUNCTION `PlayTimeOfUser`(
     SearchedUserID INT
 ) RETURNS int
@@ -434,7 +439,7 @@ BEGIN
     
 RETURN (PlayTimeInHours);
 
-END;
+END$$
 
 CREATE 
     ALGORITHM = UNDEFINED 
