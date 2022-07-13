@@ -4,7 +4,7 @@ Von Jendrik Ludwig, Tristan Grobasch, Johannes Jäger
 # Inhalt
  - [Beschreibung](#beschreibung)
  - [Installation](#installation)
- - [Techstack](#techstack)
+ - [Techstack](#tech-stack)
  - [Features](#features)
  - [Seiten](#seiten)
  - [API-Schnittstellen](#api-schnittstellen)
