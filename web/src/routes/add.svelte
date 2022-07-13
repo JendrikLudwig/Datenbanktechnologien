@@ -230,8 +230,6 @@
         type="date"
         name="releasedate"
         bind:value={input_release}
-        min="1900-01-01"
-        max="2022-07-15"
       />
 
       <p class="error">{error}</p>
