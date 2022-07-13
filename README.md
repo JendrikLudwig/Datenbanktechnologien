@@ -1,6 +1,23 @@
 # Projekt Datenbanktechnologien (GameBase)
 Von Jendrik Ludwig, Tristan Grobasch, Johannes Jäger
 
+## Installation
+
+Vergewissern sie sich, das sie sich im Ordner `web` befinden
+Öffnen sie ihre Kommandozeile/Basg
+
+Installieren sie die `node_modules` über folgende Kommandos:
+
+```bash
+  npm install
+```
+
+Starten sie den Server:
+```bash
+  npm start
+```
+
+
 ## Beschreibung
 
 Dieses Projekt entsteht im Rahmen des Moduls Datenbanktechnologien der Hochschule Fulda im Sommer Semester 2022
@@ -9,6 +26,10 @@ In der folgenden README wird nur das Frontend des Projektes thematisiert. Ein Gi
 - [Datenbankentechnologien Repo](https://github.com/JendrikLudwig/Datenbanktechnologien)
 
 Ausgangslage dieser `README.md` (im o.g. Repository) ist der Ordner [web](https://github.com/JendrikLudwig/Datenbanktechnologien/tree/main/web).
+
+
+Kurzbeschreibung Projekt
+
 
 ## Wahl des Tech-Stacks
 
@@ -48,22 +69,16 @@ Alle von uns angefertigten und für das frontend wichtigen Datein befinden sich 
 
 ## Features
 Folgende Features sind in unserem Frontend umgesetzt:
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+- Anmelden in die Webapplikation über Nutzerdaten in der Datenbank
+- Anzeigen und Durchsuchen alle Spiele in der Datenbank
+- Detailansicht jedes Spieles
+- Hinzufügen von eigenen Spielen über eigene Eingabemaske
+- Löschen von Spielen aus der Datenbank
 
 
 
 
-## Installation
 
-Install my-project with npm
-
-```bash
-  npm install my-project
-  cd my-project
-```
     
     
 
