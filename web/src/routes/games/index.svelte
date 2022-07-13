@@ -1,6 +1,7 @@
 <script>
   import LoginProvider from "../../comp/providers/login_provider.svelte";
   import GameCard from "../../comp/game/gamecard.svelte";
+  import Box from "../../comp/box.svelte";
 
   import { browser } from "$app/env";
 
@@ -33,17 +34,11 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
 
-<LoginProvider>
+<LoginProvider let:user={user}>
   <div id="page_container">
-    <div class="box">
-      <button
-        on:click={() => {
-          window.location.href = "/";
-        }}
-      >
-        Zurück
-      </button>
-    </div>
+    <Box user={user} back="/">
+      <button class="add_game_button" on:click={() =>{window.location.href = "/add"}}><i class="fa fa-plus" />Spiel hinzufügen</button>
+    </Box>
     <p>Suche nach Spielen</p>
     <input
       type="text"
@@ -52,12 +47,6 @@
       bind:value={input}
       on:input={search}
     />
-    <button
-      class="addbutton"
-      on:click={() => {
-        window.location.href = "/add";
-      }}><i class="fa fa-plus" /></button
-    >
     {#each displaydata as game}
       <GameCard id={game.GameID}>
         {game.Title}
@@ -77,31 +66,41 @@
     padding-bottom: 5rem;
   }
   .searchfield {
+    font-family: "Montserrat", sans-serif;
     height: 2rem;
     width: 25rem;
     margin: 1rem 0;
     padding: 0 0.5rem;
+    border: solid 1pt lightgrey;
+    border-radius: 3pt;
   }
 
-  .box {
-    display: flex;
-    padding: 1rem;
-    color: black;
-    background-color: rgb(20, 255, 160);
-    height: 2.5rem;
-    width: calc(100% - 2rem);
-    justify-content: flex-end;
-  }
-  .box button {
+  .add_game_button {
     font-family: "Montserrat", sans-serif;
     font-weight: bolder;
     color: white;
-    background-color: rgb(0, 0, 0);
-    border-radius: 10%;
-  }
-  .box button:hover {
+    background-color: #008FA1;
+    border-radius: .5rem;
+    height: 2.5rem;
+    padding: 0 1.5rem;
+    border: none;
+    transition-duration: 0.2s;
+    margin: 0 0 0 1rem;
+  } 
+  .add_game_button:hover {
     cursor: pointer;
+    transform: scale(0.95);
   }
+
+  .add_game_button:active {
+    cursor: progress;
+    transform: scale(0.90);
+  }
+
+  .fa { 
+    margin: 0 0.4rem 0 0;
+  }
+
   p {
     color: white;
     font-family: "Montserrat", sans-serif;
@@ -111,18 +110,5 @@
   .empty {
     font-size: 20px;
     color: rgb(245, 118, 14);
-  }
-  .addbutton {
-    background-color: rgb(169, 255, 30);
-    border-color: transparent;
-    color: white;
-    cursor: pointer;
-    height: 2.3rem;
-    width: 2.3rem;
-    margin-left: 5rem;
-  }
-
-  .addbutton:hover {
-    background-color: rgb(196, 255, 173);
   }
 </style>

@@ -106,6 +106,8 @@
         height: 2rem;
         margin: 1rem 0;
         padding: 0 0.5rem;
+        border: solid 1pt lightgrey;
+        border-radius: 3pt;
 
     }
 

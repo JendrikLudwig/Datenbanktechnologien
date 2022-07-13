@@ -15,6 +15,8 @@
 
 <script>
   import LoginProvider from "../../comp/providers/login_provider.svelte";
+  import Box from "../../comp/box.svelte";
+
   import { browser } from "$app/env";
 
   //FSK import
@@ -33,26 +35,32 @@
     const nA = nB.replaceAll('"', "");
     return nA.split(",");
   }
-  function deleteButtonHandler() {
-    if (confirm("Möchtest du das Spiel wirklich löschen?") == true)
-      response = fetch("./api/game.json", {method: DELETE}).then(res => res.text())
+
+
+  async function deleteButtonHandler() {
+    if (confirm("Möchtest du das Spiel wirklich löschen?") == true) {
+      const response = await fetch(
+        `/api/game/${data.id}.json`, {
+        method: "DELETE"
+      })
+        .then(res => res.json())
+      
+      if(response.success) window.location.href = "/games"
+      else window.alert("Spiel konnte nicht gelöscht werden.")
+    }
+      
   }
+
 </script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 {#if browser}
-  <LoginProvider>
+  <LoginProvider let:user={user}>
     <div id="page_container">
-      <div class="box">
-        <button
-          on:click={() => {
-            window.location.href = "/games";
-          }}
-        >
-          Zurück
-        </button>
-      </div>
+      <Box user={user} back="/games">
+        <button class="deletebutton" on:click={deleteButtonHandler}><i class="fa fa-trash"></i>Löschen</button>
+      </Box>
 
       <div class="title">
         
@@ -94,7 +102,6 @@
           {#each data.launcher as launcher}
             <a  href={launcher.Link} target="_blank"><div class="launcher_item">{launcher.name}</div></a>
           {/each}
-          <button class="deletebutton" on:click={deleteButtonHandler}><i class="fa fa-trash"></i></button>
         </div>
       </div>
     </div>
@@ -104,25 +111,10 @@
 
 <style>
   @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap%27");
-  .box {
-    display: flex;
-    padding: 1rem;
-    color: black;
-    background-color: rgb(20, 255, 160);
-    height: 2.5rem;
-    width: calc(100% - 2rem);
-    justify-content: flex-end;
-  }
+  
 
-  .box button {
-    font-family: "Montserrat", sans-serif;
-    font-weight: bolder;
-    color: white;
-    background-color: rgb(0, 0, 0);
-    border-radius: 10%;
-  }
-  .box button:hover {
-    cursor: pointer;
+  .fa {
+    margin: 0 0.4rem 0 0;
   }
 
   .title {
@@ -161,13 +153,15 @@
     display: flex;
     flex-direction: row;
     width: 100%;
+    flex-wrap: wrap;
+    max-width: 60rem;
   }
 
   a {
     text-decoration: none;
   }
 
-  .launcher_item{
+  .launcher_item {
     font-family: "Montserrat", sans-serif;
     font-weight: bolder;
     text-decoration: none;
@@ -177,7 +171,6 @@
     color: white;
     transition-duration: 0.2s;
     border-radius: .5rem;
-    
   }
 
   .launcher_item:hover {
@@ -195,19 +188,29 @@
     margin-right: 1rem;
   }
   .deletebutton {
-    background-color: rgb(255, 30, 124);
-    border-radius: 50%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bolder;
+    background-color: #FF5F4D;
+    border-radius: 0.5rem;
     border-color: transparent;
     color: white;
     cursor: pointer;
-    height: 7rem;
+    height: 2.5rem;
     width: 7rem;
-    font-size: 2.5rem;
-    margin-left: 45rem;
+    margin: 0 0 0 1rem;
+    transition-duration: 0.2s;
   }
 
   .deletebutton:hover {
-    background-color: rgb(255, 114, 173);
+    cursor: pointer;
+    transform: scale(0.95);
   }
+
+  .deletebutton:active {
+    cursor: progress;
+    transform: scale(0.90);
+  }
+
+
   
 </style>

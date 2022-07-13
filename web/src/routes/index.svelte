@@ -1,27 +1,23 @@
 <script>
   import LoginProvider from "../comp/providers/login_provider.svelte";
+  import Box from "../comp/box.svelte"
 
   let signout; //Signout Function
   let user = {};
 
-  function test(text) {
-    console.log(text, user);
-  }
+
 </script>
 
 <LoginProvider bind:user bind:signout>
   <div id="page_container">
-    <div class="box">
-      <p class="username"> {user.username} </p>
-      <img src={user.pic} alt=""/>
-
-    </div>
+    <Box user={user}>
+      <button class="sign_out_button" on:click={signout}><i class="fa fa-sign-out" aria-hidden="true"></i>Abmelden</button>
+    </Box>
     <div class="title">
-      <h1>Willkommen bei DBT!</h1>
+      <h1>Willkommen bei GameBase!</h1>
     </div>
      
-    <button class="gamebutton" on:click={() => {window.location.href = "/games"}}>Zu den Spielen</button>
-    <button class="signoutbutton" on:click={signout}> Abmelden </button>
+    <button class="goto_games_button" on:click={() => {window.location.href = "/games"}}>Zu den Spielen</button>
     <div class="footer">
       <p class="description">a project by</p>
       <p class="descriptionnames">
@@ -31,6 +27,7 @@
   </div>
 </LoginProvider>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
   #page_container {
     min-height: 100vh;
@@ -44,26 +41,6 @@
     font-size: xx-large;
     font-weight: bold;
   }
-  .box {
-    display: flex;
-    padding: 1rem;
-    color: black;
-    background-color: rgb(20, 255, 160);
-    height: 2.5rem;
-    width: calc(100% - 2rem);
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .box img {
-    height: 3rem;
-    border-radius: 100%;
-    margin-left: 1rem;
-  }
-
-  .box p {
-    color: black;
-  }
 
 
   p {
@@ -71,37 +48,47 @@
     font-family: "Montserrat", sans-serif;
     font-size: 20px;
   }
-  .username {
-    font-weight: bold;
-  }
-  .gamebutton {
+
+  .sign_out_button {
     font-family: "Montserrat", sans-serif;
-    font-size: medium;
-    font-weight: bold;
-    background-color: rgb(36, 153, 106);
+    font-weight: bolder;
     color: white;
-    border-color: transparent;
-    margin: 1rem;
-    transition-duration: 0.3s;
-    padding: 0.2rem 1rem 0.2rem 1rem;
-    border-radius: 3rem;
-  }
-  .signoutbutton {
+    background-color: #FF5F4D;
+    border-radius: .5rem;
+    height: 2.5rem;
+    padding: 0 1.5rem;
+    border: none;
+    transition-duration: 0.2s;
+  } 
+
+
+  .goto_games_button {
     font-family: "Montserrat", sans-serif;
-    font-size: medium;
-    background-color: rgb(223, 104, 25);
-    color: white;
-    border-color: transparent;
-    margin: 1rem;
-    transition-duration: 0.3s;
-    padding: 0.2rem 1rem 0.2rem 1rem;
-    border-radius: 3rem;
+    font-weight: bolder;
+    color: black;
+    width: 30rem;
+    background-color: #14FFA0;
+    border-radius: .5rem;
+    height: 2.5rem;
+    padding: 0 1.5rem;
+    border: none;
+    transition-duration: 0.2s;
   }
-  button:hover {
-    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-      0 17px 50px 0 rgba(0, 0, 0, 0.19);
+
+  .sign_out_button:hover, .goto_games_button:hover {
     cursor: pointer;
+    transform: scale(0.95);
   }
+
+  .sign_out_button:active, .goto_games_button:active {
+    cursor: progress;
+    transform: scale(0.90);
+  }
+
+  .fa {
+    margin: 0 0.4rem 0 0;
+  }
+
   .footer {
     position: fixed;
     left: 0;

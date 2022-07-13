@@ -6,6 +6,7 @@ export async function get({params}) {
     const game_query = `
     
         SELECT 
+            g.gameid as id,
             g.title,
             ge.Name AS Genre,
             g.fsk,
@@ -74,7 +75,6 @@ export async function get({params}) {
 
 export async function del({params}) {
 
-    const data = await request.json();
     const gamedel_query = `
     
         DELETE FROM
@@ -85,10 +85,17 @@ export async function del({params}) {
     `
 
     let game_results = await mysqlconn.query(gamedel_query)
-        .then(function([rows,fields]) {
-            return rows[0];
-        });
+        
 
+    return {
+        status: 200,
+
+        body: {
+            success: true
+        }
+
+    };
+    
 
 
 }

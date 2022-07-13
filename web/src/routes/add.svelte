@@ -3,6 +3,7 @@
   import { browser } from "$app/env";
 
   import MultiSelect from "svelte-multiselect";
+  import Box from "../comp/box.svelte";
 
   let selected_launcher = [];
 
@@ -36,7 +37,7 @@
   }
 
   async function loadEnv() {
-    const response = await fetch("./api/environment.json").then((res) => {
+    const response = await fetch("/api/environment.json").then((res) => {
       return res.json();
     });
 
@@ -136,17 +137,9 @@
   }
 </script>
 
-<LoginProvider>
+<LoginProvider let:user>
   <div id="page_container">
-    <div class="box">
-      <button
-        on:click={() => {
-          window.location.href = "/";
-        }}
-      >
-        Zurück
-      </button>
-    </div>
+    <Box user={user} back="/games"></Box>
 
     <form id="add_form">
       <h2>Spiel hinzufügen</h2>
@@ -165,7 +158,6 @@
 
       <div id="features_container">
         <p>Features</p>
-        <!-- Dokumentation: https://svelte-multiselect.netlify.app/ -->
         <MultiSelect
           bind:selectedValues={input_features}
           options={features}
@@ -176,7 +168,6 @@
       <div id="features_container">
         <p>Launcher</p>
         <!-- Dokumentation: https://svelte-multiselect.netlify.app/ -->
-
         <MultiSelect
           bind:selectedValues={selected_launcher}
           options={parseOption(launcher)}
@@ -355,14 +346,16 @@
     border-radius: 0.5rem;
     transition-duration: 0.2s;
     font-weight: 600;
+    width: 30rem;
+    align-self: center;
   }
 
   .submit:hover {
-    transform: scale(1.05);
+    transform: scale(.95);
   }
 
   .submit:active {
-    transform: scale(0.95);
+    transform: scale(.9);
   }
 
   .error {
@@ -394,14 +387,5 @@
     padding: 0.5rem;
     border-radius: 3pt;
   }
-  .box button {
-    font-family: "Montserrat", sans-serif;
-    font-weight: bolder;
-    color: white;
-    background-color: rgb(0, 0, 0);
-    border-radius: 10%;
-  }
-  .box button:hover {
-    cursor: pointer;
-  }
+
 </style>
