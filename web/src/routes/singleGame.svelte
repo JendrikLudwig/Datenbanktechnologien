@@ -68,8 +68,8 @@ const data =
 
 <LoginProvider>
   <div id="page_container">
+    
     <div class="box">
-
     </div>
 
     <div class="title">
