@@ -57,9 +57,9 @@
     loadEnv();
   }
 
-  function handleClick() {
+  async function handleClick() {
 
-    validateInputs()
+    if (!validateInputs()) return false
 
     const data = {
         input_name,
@@ -73,6 +73,17 @@
         launcher: getLauncherInputs()
     }
 
+    const res = await fetch('/api/game.json', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    }).then(res => res.json())
+      
+
+    if(res.success) window.location.href = "/games/" + res.id
+    else error = res
+
+
+    
 
     console.log(data);
   }
@@ -86,6 +97,9 @@
         url: x
       }
     })
+
+    console.log(input_launcher, selected_launcher);
+    console.log(newStruct);
 
      return newStruct.filter(x => selected_launcher.includes(String(x.LauncherID -1)))
   }
@@ -162,7 +176,7 @@
           {#each selected_launcher as la }
             <div id="launcher_url_input_element">
               <div class="launcher_label">{launcher[la].Name}</div>
-              <input bind:value={input_launcher[launcher[la].LauncherID]} placeholder="Link zum {launcher[la].Name}-Launcher"/>
+              <input type="url" bind:value={input_launcher[launcher[la].LauncherID]} placeholder="Link zum {launcher[la].Name}-Launcher"/>
             </div>
           {/each}
           
