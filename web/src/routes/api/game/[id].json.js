@@ -6,6 +6,7 @@ export async function get({params}) {
     const game_query = `
     
         SELECT 
+            g.gameid as id,
             g.title,
             ge.Name AS Genre,
             g.fsk,
@@ -45,7 +46,7 @@ export async function get({params}) {
     
     let game_results = await mysqlconn.query(game_query)
         .then(function([rows,fields]) {
-            return rows;
+            return rows[0];
         });
 
 
@@ -54,11 +55,47 @@ export async function get({params}) {
             return rows;
         });
     
+
+
+
+
     return {
         body: {
-            ...game_results,
-            launcher: launcher_results
+            data: {
+                ...game_results,
+                launcher: launcher_results,
+            }
+                
+            
+            
+            
         }
     }
 }
 
+export async function del({params}) {
+
+    const gamedel_query = `
+    
+        DELETE FROM
+            game
+        WHERE
+            gameid = ${params.id}
+
+    `
+
+    let game_results = await mysqlconn.query(gamedel_query)
+        
+
+    return {
+        status: 200,
+
+        body: {
+            success: true
+        }
+
+    };
+    
+
+
+}

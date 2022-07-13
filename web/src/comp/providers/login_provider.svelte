@@ -30,8 +30,7 @@
         /*CSS for every page goes here*/
         height: 100%;
         width: 100%;
-        background-color: rgb(55, 63, 67);
-        padding: 1rem;      
+        background-color: rgb(55, 63, 67);     
 
     }
 

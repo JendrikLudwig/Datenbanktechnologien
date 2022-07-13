@@ -275,8 +275,8 @@ CREATE TABLE `launchergame` (
   PRIMARY KEY (`LauncherGameID`),
   KEY `launcher_fk_idx` (`LauncherID`),
   KEY `game_fk_idx` (`GameID`),
-  CONSTRAINT `game_fk` FOREIGN KEY (`GameID`) REFERENCES `game` (`GameID`),
-  CONSTRAINT `launcher_fk` FOREIGN KEY (`LauncherID`) REFERENCES `launcher` (`LauncherID`)
+  CONSTRAINT `game_fk` FOREIGN KEY (`GameID`) REFERENCES `game` (`GameID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `launcher_fk` FOREIGN KEY (`LauncherID`) REFERENCES `launcher` (`LauncherID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -302,8 +302,8 @@ CREATE TABLE `besitzt` (
   `PlayTime` int DEFAULT '0',
   PRIMARY KEY (`UserID`,`LauncherGame`),
   KEY `LauncherGameID_idx` (`LauncherGame`),
-  CONSTRAINT `LauncherGameID` FOREIGN KEY (`LauncherGame`) REFERENCES `launchergame` (`LauncherGameID`),
-  CONSTRAINT `user_fk` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`)
+  CONSTRAINT `LauncherGameID` FOREIGN KEY (`LauncherGame`) REFERENCES `launchergame` (`LauncherGameID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `user_fk` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -315,3 +315,6 @@ LOCK TABLES `besitzt` WRITE;
 /*!40000 ALTER TABLE `besitzt` DISABLE KEYS */;
 /*!40000 ALTER TABLE `besitzt` ENABLE KEYS */;
 UNLOCK TABLES;
+
+
+/* Stored Procedures here*/
