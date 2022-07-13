@@ -317,4 +317,141 @@ LOCK TABLES `besitzt` WRITE;
 UNLOCK TABLES;
 
 
-/* Stored Procedures here*/
+CREATE PROCEDURE `getFriendsOfUser`(
+    IN SearchedUserID INT,
+    OUT FriendsUserID INT
+)
+BEGIN
+
+SELECT FirstUserID as FriendsOfUser, FriendsSince
+FROM befreundet_mit
+WHERE SecondUserID = SearchedUserID
+
+UNION
+
+SELECT SecondUserID, FriendsSince 
+FROM befreundet_mit
+WHERE FirstUserID = SearchedUserID
+
+ORDER BY FriendsOfUser ASC;
+    
+END;
+
+CREATE PROCEDURE `getOwnedGamesOfUser`(
+    IN SearchedUserID INT,
+    OUT GameName VARCHAR(50)
+)
+BEGIN
+
+SELECT 
+    b.title as GameTitle
+FROM
+    besitzt
+        JOIN
+    launchergame a ON LauncherGame = LauncherGameID
+        JOIN
+    game b ON a.GameID = b.GameID
+WHERE
+    UserID = SearchedUserID
+
+ORDER BY b.title ASC;
+    
+END;
+
+CREATE PROCEDURE `getUserByCountry`(
+    IN SearchedCountry VARCHAR(50),
+    OUT SearchedUser VARCHAR(50)
+)
+BEGIN
+
+    SELECT UserName
+    FROM user a
+    JOIN country b ON a.CountryID = b.CountryID
+    WHERE CountryName = SearchedCountry
+    
+    ORDER BY UserName ASC;
+    
+END;
+
+CREATE PROCEDURE `getUserByLauncherGame`(
+    IN SearchedUserID INT,
+    IN LauncherGameID INT,
+    OUT UserID INT
+)
+BEGIN
+
+SELECT UserID as besitzenAuch from besitzt
+WHERE UserID IN (
+    SELECT FirstUserID FROM befreundet_mit
+    WHERE SecondUserID = SearchedUserID
+
+    UNION
+
+    SELECT SecondUserID FROM befreundet_mit
+    WHERE FirstUserID = SearchedUserID
+)
+AND LauncherGame = LauncherGameID;
+
+END;
+
+CREATE FUNCTION `getGameCountOfUser`(
+    SearchedUserID INT
+) RETURNS int
+    READS SQL DATA
+    DETERMINISTIC
+BEGIN
+
+    DECLARE GameCount INT;
+    
+SELECT
+    count(distinct title)
+FROM
+    besitzt b
+        JOIN
+    launchergame l ON b.LauncherGame = l.LauncherGameID
+        JOIN
+    game g ON l.GameID = g.GameID
+WHERE
+    UserID = SearchedUserID INTO GameCount;
+    
+RETURN (GameCount);
+
+END;
+
+CREATE FUNCTION `PlayTimeOfUser`(
+    SearchedUserID INT
+) RETURNS int
+    READS SQL DATA
+    DETERMINISTIC
+BEGIN
+
+    DECLARE PlayTimeInHours INT;
+    
+    SELECT (sum(PlayTime)/60)
+    INTO PlayTimeInHours
+    FROM besitzt
+    WHERE UserID = SearchedUserID;
+    
+RETURN (PlayTimeInHours);
+
+END;
+
+CREATE 
+    ALGORITHM = UNDEFINED 
+    SQL SECURITY DEFINER
+VIEW `nonexplicitgames` AS
+    SELECT 
+        `game`.`GameID` AS `GameID`,
+        `game`.`Title` AS `Title`,
+        `game`.`Genre` AS `Genre`,
+        `game`.`FSK` AS `FSK`,
+        `game`.`Developer` AS `Developer`,
+        `game`.`Publisher` AS `Publisher`,
+        `game`.`ReleaseDate` AS `ReleaseDate`,
+        `game`.`Description` AS `Description`,
+        `game`.`Features` AS `Features`
+    FROM
+        `game`
+    WHERE
+        (`game`.`FSK` < '18')
+    ORDER BY `game`.`FSK`;
